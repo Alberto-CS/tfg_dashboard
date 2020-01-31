@@ -14,7 +14,6 @@ import {
 import logo200Image from 'assets/img/logo/logo_200.png';
 import {MdFilter1} from 'react-icons/md';
 
-
 const dishCard = ({dish, deleteDish}) => {
     return (
         <Card className="dishCard">
