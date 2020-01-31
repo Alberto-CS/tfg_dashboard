@@ -14,9 +14,6 @@ import {
 import logo200Image from 'assets/img/logo/logo_200.png';
 import {MdFilter1} from 'react-icons/md';
 
-import {getLocalImage} from '../../store/actions/imageActions'
-
-
 
 const dishCard = ({dish, deleteDish}) => {
     return (
