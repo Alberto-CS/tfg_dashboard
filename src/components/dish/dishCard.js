@@ -12,7 +12,8 @@ import {
 } from 'reactstrap';
 
 import logo200Image from 'assets/img/logo/logo_200.png';
-import {MdFilter1} from 'react-icons/md';
+import {getIcon} from '../../store/actions/imageActions'
+
 
 const dishCard = ({dish, deleteDish}) => {
     return (
@@ -23,10 +24,14 @@ const dishCard = ({dish, deleteDish}) => {
                 <CardText>{dish.description}</CardText>
                 <Row>
                     <Col>
-                            <MdFilter1></MdFilter1>
-                            <MdFilter1></MdFilter1>
-                            <MdFilter1></MdFilter1>
-                            <MdFilter1></MdFilter1>
+                    {dish && dish.allergens.map(allergen =>{
+                            if ( allergen.isInTheDish === true){
+                                return (<img className="iconAllergies mx-1" id={allergen.name} name={allergen.name}
+                                 src={ allergen.name ? getIcon(allergen.name + ".png",allergen.name) : logo200Image} alt={allergen.name}></img>)
+                            }else{
+                                return null;
+                            }
+                    })}
                     </Col>
                 </Row>
             </CardBody>

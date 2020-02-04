@@ -5,25 +5,14 @@ import { firestoreConnect} from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 
-
-
-class List extends Component {
+class Restaurants extends Component {
     render(){
         const { dishes, auth} = this.props;
         if (! auth.uid && auth.isLoaded) return <Redirect to='/login' />
         return (
             <div>
                 <div className="d-flex flex-wrap">
-                    {dishes && dishes.map(dish =>{
-                        if (dish.restaurantId === auth.uid){
-                        return (
-                        <div className="col-3 mx-auto">
-                            <DishCard dish={dish} key={dish.id} />                                                                            
-                        </div>)
-                        }else{
-                            return null;
-                        }
-                    })}
+                    
                 </div>                           
                 </div>
         )
@@ -40,7 +29,8 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        {collection: 'platos'}
+        {collection: 'platos'},
+        {collection: 'restaurantes'}
     ])
-)(List)
+)(Restaurants)
 

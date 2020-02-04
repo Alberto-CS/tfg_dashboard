@@ -14,7 +14,7 @@ import crustaceos  from '../../images&icons/food/crustaceos.png'
 import sulfitos  from '../../images&icons/food/sulfitos.png'
 import frutosCascara  from '../../images&icons/food/frutosCascara.png'
 import gluten  from '../../images&icons/food/gluten.png'
-import granosSesamo  from '../../images&icons/food/granos-sesamo.png'
+import granosSesamo  from '../../images&icons/food/granosSesamo.png'
 import huevos  from '../../images&icons/food/huevos.png'
 import moluscos  from '../../images&icons/food/moluscos.png'
 import mostaza  from '../../images&icons/food/mostaza.png'
@@ -31,17 +31,42 @@ class CreateDish extends Component {
         description: 'Descripción del plato',
         url: '',
         price: '',
+        allergens: [
+            {name: 'altramuces', isInTheDish: false},
+            {name: 'apio', isInTheDish: false},
+            {name: 'cacahuete', isInTheDish: false},
+            {name: 'crustaceos', isInTheDish: false},
+            {name: 'sulfitos', isInTheDish: false},
+            {name: 'frutosCascara', isInTheDish: false},
+            {name: 'gluten', isInTheDish: false},
+            {name: 'granosSesamo', isInTheDish: false},
+            {name: 'huevos', isInTheDish: false},
+            {name: 'moluscos', isInTheDish: false},
+            {name: 'mostaza', isInTheDish: false},
+            {name: 'pescado', isInTheDish: false},
+            {name: 'soja', isInTheDish: false},
+            {name: 'lacteos', isInTheDish: false},],
+        spicy: false,
+        vegetarian: false,
     }
     
     image = {
         file: '',
     }
 
+    toggle = (e) => {
+        this.setState({
+            allergens: this.state.allergens.map(allergen => (
+                allergen.name === e.target.name ? {name: allergen.name, isInTheDish: !allergen.isInTheDish} : {name: allergen.name, isInTheDish: allergen.isInTheDish}
+                ))
+        })            
+    }
+
     handleChange = (e) => {
         if (e.target.id === 'url'){
             this.image.file = e.target.files[0]
             this.setState({url: this.image.file.name.toString()})
-            getLocalImage(this.image.file)
+            getLocalImage(this.image.file)     
         } else {
             this.setState({[e.target.id]: e.target.value})
         }
@@ -88,9 +113,8 @@ class CreateDish extends Component {
                                                     <div className="">
                                                         <input type="number" id="price" onChange={ this.handleChange } />
                                                         <label className="ml-1" htmlFor="price">€</label>
-
                                                     </div>
-                                                    <select className="mx-auto mt-2">
+                                                    <select className="mx-auto mt-2 d-none">
                                                         <option value="plato" disabled selected>Tipo de plato</option>
                                                         <option value="Entremeses">Entremeses</option>
                                                         <option value="Plato-Principal">Plato Principal</option>
@@ -121,51 +145,52 @@ class CreateDish extends Component {
                                             <Row className="mt-4">  
                                                 <h5 className="text-primary mx-auto">Allergens</h5>
                                                     <div>
-                                                        <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={altramuces} alt="altramuces"/>
+                                                        <btn className="btnAllergies" >
+                                                            <input className="iconAllergies" name="altramuces" type="image"
+                                                             src={altramuces} alt="altramuces" onClick={this.toggle}/>
+                                                        </btn>
+                                                        <btn className="btnAllergies">
+                                                            <input className="iconAllergies" name="apio" type="image" src={apio} alt="apio" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={apio} alt="apio"/>
+                                                            <input className="iconAllergies" name="cacahuete" type="image" src={cacahuete} alt="cacahuete" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={cacahuete} alt="cacahuete"/>
+                                                            <input className="iconAllergies" name="crustaceos" type="image" src={crustaceos} alt="crustaceos" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={crustaceos} alt="crustaceos"/>
+                                                            <input className="iconAllergies" name="sulfitos" type="image" src={sulfitos} alt="sulfitos" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={sulfitos} alt="sulfitos"/>
+                                                            <input className="iconAllergies" name="frutosCascara" type="image" src={frutosCascara} alt="frutos con cascara" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={frutosCascara} alt="frutos con cascara"/>
+                                                            <input className="iconAllergies" name="lacteos" type="image" src={lacteos} alt="lacteos" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={lacteos} alt="lacteos"/>
+                                                            <input className="iconAllergies" name="gluten" type="image" src={gluten} alt="gluten" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={gluten} alt="gluten"/>
+                                                            <input className="iconAllergies" name="granosSesasmo" type="image" src={granosSesamo} alt="sésamo" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={granosSesamo} alt="sésamo"/>
+                                                            <input className="iconAllergies" name="huevos" type="image" src={huevos} alt="huevos" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={huevos} alt="huevos"/>
+                                                            <input className="iconAllergies" name="moluscos" type="image" src={moluscos} alt="moluscos" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={moluscos} alt="moluscos"/>
+                                                            <input className="iconAllergies" name="mostaza" type="image" src={mostaza} alt="mostaza" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={mostaza} alt="mostaza"/>
+                                                            <input className="iconAllergies" name="pescado" type="image" src={pescado} alt="pescado" onClick={this.toggle}/>
                                                         </btn>
                                                         <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={pescado} alt="pescado"/>
-                                                        </btn>
-                                                        <btn className="btnAllergies waves-effect waves-dark">
-                                                            <input className="iconAllergies" type="image" src={soja} alt="soja"/>
+                                                            <input className="iconAllergies" name="soja" type="image" src={soja} alt="soja" onClick={this.toggle}/>
                                                         </btn>                                                  
                                                     </div>
                                             </Row>                                    
-                                            <Row>
+                                            <Row className="d-none">
                                                 <Col>
                                                     <h5 className="text-primary mx-auto mt-2">Spicy</h5>
                                                         <btn className="btnAllergies">

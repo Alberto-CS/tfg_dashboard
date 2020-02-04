@@ -11,23 +11,21 @@ export const createDish = (dish) => {
         }).catch((err) => {
             dispatch({ type: 'CREATE_DISH_ERROR', err });
         })
-        
     }
 }
 
-//TODO: update a dish
 export const updateDish = (dish) => {
-    console.log("entro en updateDish actions")
-    console.log(dish)
-    return (dispatch, getState, {getFirebase, getFirestore }) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
-        firestore.collection('platos').doc(dish.id).update().then(() => {
-            dispatch({ type: 'UPDATE_DISH'});
+        firestore.collection('platos').doc(dish.id).update({
+            price: "2"
+        }).then(() => {
+            dispatch({ type: 'UPDATE_DISH', dish });
         }).catch((err) => {
             dispatch({ type: 'UPDATE_DISH_ERROR', err });
         })
-        
     }
+
 }
 
 export const deleteDish = (dish) => {

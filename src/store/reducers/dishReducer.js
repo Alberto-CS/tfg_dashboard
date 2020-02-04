@@ -12,6 +12,7 @@ const dishReducer = (state = initState, action) => {
     switch (action.type) {
         case 'CREATE_DISH': 
             console.log('Dish added', action.dishes)
+            setTimeout(function(){ window.location.href = './list';}, 3000);
             return state;
         case 'CREATE_DISH_ERROR':
             console.log('Dish added error', action.err);

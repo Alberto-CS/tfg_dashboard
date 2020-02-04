@@ -6,7 +6,6 @@ import {
   MdDashboard,
   MdKeyboardArrowDown,
   MdAddBox,
-  MdLanguage,
   MdRestaurant,
   MdStyle,
   MdStore,
@@ -34,7 +33,6 @@ const sidebarBackground = {
 const navComponents = [
   { to: '/dish/list', name: 'List Dishes', exact: false, Icon: MdRestaurantMenu},
   { to: '/dish/add', name: 'Add Dish', exact: false, Icon: MdAddBox },
-  { to: '/dish/language', name: 'Add language', exact: false, Icon: MdLanguage },
 ];
 
 const navContents = [
