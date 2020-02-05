@@ -14,10 +14,10 @@ export const createDish = (dish) => {
     }
 }
 
-export const updateDish = (dish) => {
+export const updateDish = (dish, id) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
-        firestore.collection('platos').doc(dish.id).update({
+        firestore.collection('platos').doc(id).update({
             ...dish,
         }).then(() => {
             dispatch({ type: 'UPDATE_DISH', dish });

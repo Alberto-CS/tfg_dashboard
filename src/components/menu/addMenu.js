@@ -10,7 +10,7 @@ import { compose } from 'redux'
 
 class CreateMenu extends Component {
     state = {
-        title: 'Nombre del menú',
+        title: 'Title',
         dishes: [],
         showSpicy: false,
         showVegetarian: false,
@@ -73,7 +73,7 @@ class CreateMenu extends Component {
                                         <div className="col-6 mx-auto">
                                             <Row>
                                                 <Col className="mx-auto mt-1">
-                                                    <label className="text-secondary" htmlFor="title">Name</label>
+                                                    <label className="text-secondary h5" htmlFor="title">Title</label>
                                                     <input type="form-control" id="title" onChange={ this.handleChange } />
                                                 </Col>                                       
                                             </Row>

@@ -23,8 +23,7 @@ import {getImage, getIcon} from '../../store/actions/imageActions'
 
 
 
-const listDishCard = ({dish, deleteDish}) => {
-
+const listDishCard = ({dish, deleteDish, toggle}) => {
     return (
         <div>
             <Card className="dishCard">
@@ -45,7 +44,7 @@ const listDishCard = ({dish, deleteDish}) => {
                         </Col>
                     </Row>
                     <Row className="mt-4">
-                        <Button type="button" color="primary" className="mx-auto" id="updateDish" onClick={null} >Update <MdEdit></MdEdit></Button>
+                        <Button type="button" color="primary" className="mx-auto" id="updateDish" onClick={() => {toggle(dish)}} >Update <MdEdit></MdEdit></Button>
                         <Button type="button" className="mx-auto" id="deleteDish" onClick={() => {deleteDish(dish)}} >Delete <MdDelete></MdDelete></Button>
                     </Row>
                 </CardBody>

@@ -22,7 +22,6 @@ const menuReducer = (state = initState, action) => {
             console.log('Menu deleted error', action.err);
             return state;        
         default:
-            console.log("No devuelvo nada")
             return state;
     }
 }

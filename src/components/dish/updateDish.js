@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import DishCard from './dishCard'
 import { connect } from 'react-redux'
-import { createDish } from '../../store/actions/dishActions'
+import { updateDish } from '../../store/actions/dishActions'
 import { Redirect } from 'react-router-dom'
-import { Card, CardBody, CardHeader, Col, Form, Row } from 'reactstrap';
-import {addImage, getLocalImage} from '../../store/actions/imageActions'
+import { Card, CardBody, Col, Form, Row } from 'reactstrap';
+import {addImage} from '../../store/actions/imageActions'
 
 
 //Alérgenos, picante y vegano
@@ -28,32 +27,22 @@ import lacteos  from '../../images&icons/food/lacteos.png'
 
 class UpdateDish extends Component {
     state = {
-        title: 'Nombre del plato',
-        description: 'Descripción del plato',
-        url: '',
-        price: '',
-        allergens: [
-            {name: 'altramuces', isInTheDish: false},
-            {name: 'apio', isInTheDish: false},
-            {name: 'cacahuete', isInTheDish: false},
-            {name: 'crustaceos', isInTheDish: false},
-            {name: 'sulfitos', isInTheDish: false},
-            {name: 'frutosCascara', isInTheDish: false},
-            {name: 'gluten', isInTheDish: false},
-            {name: 'granossesamo', isInTheDish: false},
-            {name: 'huevos', isInTheDish: false},
-            {name: 'moluscos', isInTheDish: false},
-            {name: 'mostaza', isInTheDish: false},
-            {name: 'pescado', isInTheDish: false},
-            {name: 'soja', isInTheDish: false},
-            {name: 'lacteos', isInTheDish: false},],
-        spicy: false,
-        vegetarian: false,
+        title: this.props.dishId.title,
+        description: this.props.dishId.description,
+        url: this.props.dishId.url,
+        price: this.props.dishId.price,
+        allergens: [...this.props.dishId.allergens],
+        spicy: this.props.dishId.spicy,
+        vegetarian: this.props.dishId.vegetarian,
     }
     
     image = {
         file: '',
     }
+
+    newDish = {
+        id: this.props.dishId
+    } 
 
     toggle = (e) => {
         this.setState({
@@ -67,7 +56,6 @@ class UpdateDish extends Component {
         if (e.target.id === 'url'){
             this.image.file = e.target.files[0]
             this.setState({url: this.image.file.name.toString()})
-            getLocalImage(this.image.file)     
         } else {
             this.setState({[e.target.id]: e.target.value})
         }
@@ -80,40 +68,36 @@ class UpdateDish extends Component {
                 addImage(this.image.file, this.state.url)
             }
             console.log(this.state)
-            this.props.createDish(this.state)
+            this.props.updateDish(this.state, this.props.dishId)
         }
     }    
     render() {
         const { auth } = this.props
-        console.log(this.props)
+        console.log(this.state)
         if (! auth.uid && auth.isLoaded) return <Redirect to='/login' />
         return (
-            <div>
-                <Row className="d-flex flex-wrap">
-                    <div className="align-self-center col-5 justify-content-center mx-auto"><DishCard dish={this.state} /></div>
-                    <Col className="align-self-center col-6 justify-content-center mx-auto">
+            <Col className="align-self-center justify-content-center mx-auto">
                     <Card className="formCard">
-                    <CardHeader className="text-primary display-4">New Dish</CardHeader>
                         <CardBody>
                             <Form onSubmit={ this.handleSubmit }>
                                     <div className="row flex-wrap d-flex">
-                                        <div className="col-6 mx-auto">
+                                        <div className="col-7 mx-auto">
                                             <h5 className="text-primary h5">Dish Data</h5>
                                             <Row>
                                                 <Col className="mx-auto mt-1">
                                                     <label className="text-secondary" htmlFor="title">Name</label>
-                                                    <input type="form-control" id="title" onChange={ this.handleChange } />
+                                                    <input type="form-control" id="title" value={this.state.title} onChange={ this.handleChange } />
                                                 </Col>
                                                 <Col className="mx-auto mt-1">
                                                     <label className="text-secondary" htmlFor="textarea">Description</label>
-                                                    <textarea className="materialize-textarea" id="description" onChange= {this.handleChange}></textarea>
+                                                    <textarea className="materialize-textarea" value={this.state.description} id="description" onChange= {this.handleChange}></textarea>
                                                 </Col>                                        
                                             </Row>
                                             <Row>
                                                 <Col className="mx-auto mt-1">
                                                     <label className="text-secondary" htmlFor="textarea">Price</label>
-                                                    <div className="">
-                                                        <input type="number" id="price" onChange={ this.handleChange } />
+                                                    <div>
+                                                        <input type="number" id="price" value={this.state.price} onChange={ this.handleChange } />
                                                         <label className="ml-1" htmlFor="price">€</label>
                                                     </div>
                                                     <select className="mx-auto mt-2 d-none">
@@ -212,14 +196,12 @@ class UpdateDish extends Component {
                                         </div>
                                     </div>
                                     <Row className="mt-4">
-                                        <button id="addDish" className="btn btn-primary btn-sm btn-block" onClick={this.handleSubmit}>Actualizar plato</button>
+                                        <button id="addDish" className="btn btn-primary btn-sm btn-block" onClick={this.handleSubmit}>Update dish</button>
                                     </Row>                    
                             </Form>
                         </CardBody>
                     </Card>
                     </Col>
-                </Row>
-            </div>
         )
     }
 }
@@ -232,7 +214,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createDish: (dish) => dispatch(createDish(dish)),
+        updateDish: (state, newDish) => dispatch(updateDish(state, newDish.id)),
     }
 }
 
