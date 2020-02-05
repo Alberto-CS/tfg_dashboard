@@ -15,16 +15,12 @@ import {
 } from 'reactstrap';
 
 import logo200Image from 'assets/img/logo/logo_200.png';
-import {MdDelete, MdEdit} from 'react-icons/md';
+import { MdEdit} from 'react-icons/md';
 
 import {getImage, getIcon} from '../../store/actions/imageActions'
 
 
-
-
-
-const listDishCard = ({dish, deleteDish}) => {
-
+const DishCard = ({dish, deleteDish}) => {
     return (
         <div>
             <Card className="dishCard">
@@ -45,8 +41,7 @@ const listDishCard = ({dish, deleteDish}) => {
                         </Col>
                     </Row>
                     <Row className="mt-4">
-                        <Button type="button" color="primary" className="mx-auto" id="updateDish" onClick={null} >Update <MdEdit></MdEdit></Button>
-                        <Button type="button" className="mx-auto" id="deleteDish" onClick={() => {deleteDish(dish)}} >Delete <MdDelete></MdDelete></Button>
+                        <Button type="button" color="primary" className="mx-auto" id="updateDish" onClick={null} >Add to menu <MdEdit></MdEdit></Button>
                     </Row>
                 </CardBody>
             </Card>
@@ -62,4 +57,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps) (listDishCard)
+export default connect(null, mapDispatchToProps) (DishCard)

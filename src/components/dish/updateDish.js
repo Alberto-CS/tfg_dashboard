@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 import { Card, CardBody, CardHeader, Col, Form, Row } from 'reactstrap';
 import {addImage, getLocalImage} from '../../store/actions/imageActions'
 
+
 //Alérgenos, picante y vegano
 import altramuces from '../../images&icons/food/altramuces.png'
 import apio from '../../images&icons/food/apio.png'
@@ -25,7 +26,7 @@ import lacteos  from '../../images&icons/food/lacteos.png'
 //Banderas
 
 
-class CreateDish extends Component {
+class UpdateDish extends Component {
     state = {
         title: 'Nombre del plato',
         description: 'Descripción del plato',
@@ -84,6 +85,7 @@ class CreateDish extends Component {
     }    
     render() {
         const { auth } = this.props
+        console.log(this.props)
         if (! auth.uid && auth.isLoaded) return <Redirect to='/login' />
         return (
             <div>
@@ -210,7 +212,7 @@ class CreateDish extends Component {
                                         </div>
                                     </div>
                                     <Row className="mt-4">
-                                        <button id="addDish" className="btn btn-primary btn-sm btn-block" onClick={this.handleSubmit}>Añadir plato</button>
+                                        <button id="addDish" className="btn btn-primary btn-sm btn-block" onClick={this.handleSubmit}>Actualizar plato</button>
                                     </Row>                    
                             </Form>
                         </CardBody>
@@ -234,4 +236,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateDish)
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateDish)

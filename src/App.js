@@ -9,7 +9,8 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
 import List from './components/dish/list'
 import CreateDish  from './components/dish/addDish'
-
+import UpdateDish  from './components/dish/updateDish'
+import CreateMenu  from './components/menu/addMenu'
 
 const DashboardPage = React.lazy(() => import('pages/DashboardPage'));
 
@@ -38,6 +39,8 @@ class App extends React.Component {
                 <Route exact path="/" component={DashboardPage} />
                 <Route path='/dish/list' component={List} />
                 <Route path='/dish/add' component={CreateDish} />
+                <Route path='/dish/update' component={UpdateDish} />
+                <Route path='/menu/add' component={CreateMenu} />
               </React.Suspense>
             </MainLayout>
             <Redirect to="/" />

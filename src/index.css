@@ -67,3 +67,11 @@ a {
   padding: 2em;
   margin: 1em;
 }
+
+.overflow-h {
+  overflow: hidden !important;
+}
+
+.position-st {
+  position: sticky !important
+}

@@ -18,7 +18,7 @@ export const updateDish = (dish) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('platos').doc(dish.id).update({
-            price: "2"
+            ...dish,
         }).then(() => {
             dispatch({ type: 'UPDATE_DISH', dish });
         }).catch((err) => {
