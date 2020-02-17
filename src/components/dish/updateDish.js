@@ -73,7 +73,6 @@ class UpdateDish extends Component {
     }    
     render() {
         const { auth } = this.props
-        console.log(this.state)
         if (! auth.uid && auth.isLoaded) return <Redirect to='/login' />
         return (
             <Col className="align-self-center justify-content-center mx-auto">

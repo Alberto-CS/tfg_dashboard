@@ -7,10 +7,13 @@ import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
-import List from './components/dish/list'
+
+import ListDish from './components/dish/list'
 import CreateDish  from './components/dish/addDish'
 import UpdateDish  from './components/dish/updateDish'
+import ListMenu from './components/menu/list'
 import CreateMenu  from './components/menu/addMenu'
+import UpdateMenu  from './components/menu/updateMenu'
 
 const DashboardPage = React.lazy(() => import('pages/DashboardPage'));
 
@@ -37,10 +40,12 @@ class App extends React.Component {
             <MainLayout breakpoint={this.props.breakpoint}>
               <React.Suspense fallback={<PageSpinner />}>
                 <Route exact path="/" component={DashboardPage} />
-                <Route path='/dish/list' component={List} />
+                <Route path='/dish/list' component={ListDish} />
                 <Route path='/dish/add' component={CreateDish} />
                 <Route path='/dish/update' component={UpdateDish} />
+                <Route path='/menu/list' component={ListMenu} />
                 <Route path='/menu/add' component={CreateMenu} />
+                <Route path='/menu/update' component={UpdateMenu} />
               </React.Suspense>
             </MainLayout>
             <Redirect to="/" />

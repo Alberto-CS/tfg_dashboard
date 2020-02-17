@@ -15,14 +15,15 @@ import {
 import logo200Image from 'assets/img/logo/logo_200.png';
 import { MdEdit} from 'react-icons/md';
 
-import {getImage, getIcon} from '../../store/actions/imageActions'
+import {getImageClass, getIcon} from '../../store/actions/imageActions'
 
 
-const DishCard = ({dish, addDishToState}) => {
+const menuDishCard = ({dish, removeDishFromState, uniqueDish}) => {
+    if (dish === null) return null
     return (
         <div>
-            <Card className="dishCard">
-                <CardImg top src={ dish.url ? getImage(dish.url, dish.id) : logo200Image } id={dish.id} alt={dish.title}/>
+            <Card className="dishCard flex-row">
+                <CardImg style={{ width: 300, height: 200 }}  className="card-img-left" name={dish.title} src={ dish.url ? getImageClass(dish.url, dish.title) : logo200Image } id={dish.id} alt={dish.title}/>
                 <CardBody>
                     <CardTitle>{dish.title}</CardTitle>
                     <CardText>{dish.description}</CardText>
@@ -30,16 +31,16 @@ const DishCard = ({dish, addDishToState}) => {
                         <Col>
                             {dish && dish.allergens.map(allergen =>{
                                 if ( allergen.isInTheDish === true){
-                                return (<img className="iconAllergies mx-1" key={allergen.name} id={allergen.name} name={allergen.name}
+                                return (<img className="iconAllergies mx-1" key={allergen.name}  id={allergen.name} name={allergen.name}
                                  src={ getIcon(allergen.name + ".png", allergen.name)} alt={allergen.name}></img>)
-                            }else{
-                                return null;
-                            }
+                                }else{
+                                    return null;
+                                }
                             })}
                         </Col>
                     </Row>
                     <Row className="mt-4">
-                        <Button type="button" color="primary" className="mx-auto" id="updateDish" onClick={() => {addDishToState(dish)}} >Add to menu <MdEdit></MdEdit></Button>
+                        <Button type="button" color="secondary" className="mx-auto" id="updateDish" onClick={() => {removeDishFromState(dish, uniqueDish)}} >Remove from menu <MdEdit></MdEdit></Button>
                     </Row>
                 </CardBody>
             </Card>
@@ -48,4 +49,4 @@ const DishCard = ({dish, addDishToState}) => {
 }
 
 
-export default (DishCard)
+export default (menuDishCard)

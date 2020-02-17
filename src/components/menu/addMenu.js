@@ -1,5 +1,6 @@
 import  React, {Component } from 'react'
 import DishCard  from './dishCard'
+import MenuDishCard  from './menuDishCard'
 import { connect } from 'react-redux'
 import { createMenu } from '../../store/actions/menuActions'
 import { Redirect } from 'react-router-dom'
@@ -39,11 +40,21 @@ class CreateMenu extends Component {
     }
 
     addDishToState = (dish) => {
-        this.setState()
+        this.setState({ dishes: [...this.state.dishes, dish] })
     }
 
-    removeDishToState = (dish) => {
-        this.setState()
+    removeDishFromState = (dish, i) => {
+        //this.setState({ dishes: [this.state.dishes.filter(item => item.title !== dish.title)] })
+        console.log("quiero borrar el plato del menú " + dish.title + " con índice " + i)
+        const array = this.state.dishes
+        console.log(this.state)
+        const index = array.indexOf(i)
+        console.log(index)
+    }
+
+    //FUNCTION FROM https://gist.github.com/gordonbrander/2230317
+    generateId = () => {
+        return '_' + Math.random().toString(36).substr(2, 9);
     }
 
     render() {
@@ -56,8 +67,8 @@ class CreateMenu extends Component {
                         {dishes && dishes.map(dish =>{
                             if (dish.restaurantId === auth.uid){
                             return (
-                            <div className="mx-auto">
-                                <DishCard dish={dish} key={dish.id} />
+                            <div className="mx-auto" key={dish.id}>
+                                <DishCard dish={dish} key={dish.id} addDishToState={this.addDishToState}/>
                             </div>)
                             }else{
                                 return null;
@@ -97,10 +108,10 @@ class CreateMenu extends Component {
                             </Form>
                         </CardBody>
                         <CardFooter>
-                            {this.state.dishes && this.state.dishes.map(dish =>{
+                        {this.state.dishes && this.state.dishes.map((dish, index) =>{
                                 return (
-                                <div className="mx-auto">
-                                    <DishCard dish={dish} key={dish.id} />                                                                            
+                                <div className="mx-auto" key={index}>
+                                    <MenuDishCard dish={dish} key={index} uniqueDish={this.generateId()} removeDishFromState={this.removeDishFromState} />
                                 </div>)
                             })}
                         </CardFooter>
