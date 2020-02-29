@@ -121,10 +121,10 @@ class UpdateDish extends Component {
                                             <Row className="mt-2">
                                             <h5 className="text-primary mx-auto">Additional languages:</h5>
                                             <div className="btn-group mx-auto">
-                                                <button className="btn btn-secondary">EN</button>
-                                                <button className="btn btn-secondary">SP</button>
-                                                <button className="btn btn-secondary">FR</button>
-                                                <button className="btn btn-secondary">GE</button>
+                                                <button className="btn btn-secondary" disabled>EN</button>
+                                                <button className="btn btn-secondary" disabled>SP</button>
+                                                <button className="btn btn-secondary" disabled>FR</button>
+                                                <button className="btn btn-secondary" disabled>GE</button>
                                             </div>
                                             </Row>
                                             <Row className="mt-4">  

@@ -18,7 +18,7 @@ import { MdEdit} from 'react-icons/md';
 import {getImageClass, getIcon} from '../../store/actions/imageActions'
 
 
-const menuDishCard = ({dish, removeDishFromState, uniqueDish}) => {
+const menuDishCard = ({dish, removeDishFromState, positionOfDish}) => {
     if (dish === null) return null
     return (
         <div>
@@ -31,7 +31,7 @@ const menuDishCard = ({dish, removeDishFromState, uniqueDish}) => {
                         <Col>
                             {dish && dish.allergens.map(allergen =>{
                                 if ( allergen.isInTheDish === true){
-                                return (<img className="iconAllergies mx-1" key={allergen.name}  id={allergen.name} name={allergen.name}
+                                return (<img className="iconAllergies mx-1 iconMenuAllergenCard" key={allergen.name}  id={allergen.name} name={allergen.name}
                                  src={ getIcon(allergen.name + ".png", allergen.name)} alt={allergen.name}></img>)
                                 }else{
                                     return null;
@@ -40,7 +40,7 @@ const menuDishCard = ({dish, removeDishFromState, uniqueDish}) => {
                         </Col>
                     </Row>
                     <Row className="mt-4">
-                        <Button type="button" color="secondary" className="mx-auto" id="updateDish" onClick={() => {removeDishFromState(dish, uniqueDish)}} >Remove from menu <MdEdit></MdEdit></Button>
+                        <Button type="button" color="secondary" className="mx-auto" id="updateDish" onClick={() => {removeDishFromState(positionOfDish)}} >Remove from menu <MdEdit></MdEdit></Button>
                     </Row>
                 </CardBody>
             </Card>

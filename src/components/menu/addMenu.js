@@ -15,19 +15,45 @@ class CreateMenu extends Component {
         dishes: [],
         showSpicy: false,
         showVegetarian: false,
-        showAllergens: false,
+        showAllergens: true,
         showPrice: false,
         showCategory: false,
-        showImage: false,
+        showImage: true,
     }
     
-    image = {
-        file: '',
+    index = {
+        id: [],
     }
 
     show = (e) => {
-        //TODO: toggle para mostrar o no ciertas cosas           
+        //TODO: toggle para mostrar o no ciertas cosas
+        switch (e){
+            case "showAllergens":
+                this.setState({showAllergens: !this.state.showAllergens})
+                break
+            case "showCategory":
+                this.setState({showCategory: !this.state.showCategory})
+                break
+            case "showImage":
+                this.setState({showImage: !this.state.showImage})
+                break
+            case "showPrice":
+                this.setState({showPrice: !this.state.showPrice})
+                break
+            case "showSpicy":
+                this.setState({showSpicy: !this.state.showSpicy})
+                break
+            case "showVegetarian":
+                this.setState({showVegetarian: !this.state.showVegetarian})
+                break
+            default:
+                console.log("Caso por defecto Switch")
+        }
+        console.log(this.state)
+                   
     }
+
+
 
     handleChange = (e) => {
         this.setState({[e.target.id]: e.target.value})
@@ -40,21 +66,13 @@ class CreateMenu extends Component {
     }
 
     addDishToState = (dish) => {
-        this.setState({ dishes: [...this.state.dishes, dish] })
+        this.setState({ dishes: [...this.state.dishes, dish] })        
     }
 
-    removeDishFromState = (dish, i) => {
-        //this.setState({ dishes: [this.state.dishes.filter(item => item.title !== dish.title)] })
-        console.log("quiero borrar el plato del menú " + dish.title + " con índice " + i)
+    removeDishFromState = (i) => {
         const array = this.state.dishes
-        console.log(this.state)
-        const index = array.indexOf(i)
-        console.log(index)
-    }
-
-    //FUNCTION FROM https://gist.github.com/gordonbrander/2230317
-    generateId = () => {
-        return '_' + Math.random().toString(36).substr(2, 9);
+        array.splice(i, 1)
+        this.setState({ dishes: array })
     }
 
     render() {
@@ -80,28 +98,63 @@ class CreateMenu extends Component {
                     <CardHeader className="text-primary display-4">{this.state.title}</CardHeader>
                         <CardBody>
                             <Form onSubmit={ this.handleSubmit }>
-                                    <div className="row flex-wrap d-flex">
-                                        <div className="col-6 mx-auto">
-                                            <Row>
-                                                <Col className="mx-auto mt-1">
-                                                    <label className="text-secondary h5" htmlFor="title">Title</label>
-                                                    <input type="form-control" id="title" onChange={ this.handleChange } />
-                                                </Col>                                       
-                                            </Row>
-
-                                        </div>
-                                        <div className="col-4 mx-auto">                                            
-                                            <Row className="mt-2">
+                                    <Row>
+                                        <Col className="col-8 mx-auto mt-1">
+                                            <h5 className="text-secondary h5" htmlFor="title">Title</h5>
+                                            <input type="form-control" id="title" onChange={ this.handleChange } />
+                                        </Col>
+                                        <Col className="mt-2 col-4 mx-auto">
                                             <h5 className="text-primary mx-auto">Additional languages:</h5>
                                             <div className="btn-group mx-auto">
-                                                <button className="btn btn-secondary">EN</button>
-                                                <button className="btn btn-secondary">SP</button>
-                                                <button className="btn btn-secondary">FR</button>
-                                                <button className="btn btn-secondary">GE</button>
+                                                <button className="btn btn-secondary" disabled>EN</button>
+                                                <button className="btn btn-secondary" disabled>SP</button>
+                                                <button className="btn btn-secondary" disabled>FR</button>
+                                                <button className="btn btn-secondary" disabled>GE</button>
                                             </div>
-                                            </Row>                                
-                                        </div>
-                                    </div>
+                                        </Col>                                
+                                    </Row>
+                                                                       
+                                    <div className="container mx-auto">
+                                    <Row>
+                                        <h5 className="mt-4 text-secondary h5">Show</h5>
+                                    </Row>
+                                    <Row className="mt-2">
+                                        <span className="col-4">
+                                            <label>
+                                                <input type="checkbox" onChange={() => (this.show("showAllergens"))} checked={this.state.showAllergens}/> Allergens 
+                                            </label>
+                                        </span>
+
+                                        <span className="col-4">                                            
+                                            <label>
+                                                <input type="checkbox" onChange={() => (this.show("showCategory"))} checked={this.state.showCategory}/> Category 
+                                            </label>
+                                        </span>
+                                        <span className="col-4">                                            
+                                            <label>
+                                                <input type="checkbox" onChange={() => (this.show("showImage"))} checked={this.state.showImage}/> Image 
+                                            </label>
+                                        </span>
+
+                                    </Row>
+                                    <Row className="mt-2">
+                                        <span className="col-4">
+                                        <label>
+                                            <input type="checkbox"
+                                            onChange={() => (this.show("showPrice"))} checked={this.state.showPrice}/> Price </label>
+                                        </span>
+                                        <span className="col-4">
+                                        <label>
+                                            <input type="checkbox" 
+                                            onChange={() => (this.show("showSpicy"))} checked={this.state.showSpicy}/> Spicy </label>
+                                        </span>
+                                        <span className="col-4">
+                                        <label>
+                                            <input type="checkbox"
+                                            onChange={() => (this.show("showVegetarian"))} checked={this.state.showVegetarian}/> Veggie </label>
+                                        </span>
+                                    </Row>
+                                    </div>                                     
                                     <Row className="mt-4">
                                         <button id="addMenu" className="btn btn-primary btn-sm btn-block" onClick={this.handleSubmit}>Add menu</button>
                                     </Row>                    
@@ -111,7 +164,7 @@ class CreateMenu extends Component {
                         {this.state.dishes && this.state.dishes.map((dish, index) =>{
                                 return (
                                 <div className="mx-auto" key={index}>
-                                    <MenuDishCard dish={dish} key={index} uniqueDish={this.generateId()} removeDishFromState={this.removeDishFromState} />
+                                    <MenuDishCard dish={dish} key={index} positionOfDish={index} removeDishFromState={this.removeDishFromState} />
                                 </div>)
                             })}
                         </CardFooter>
