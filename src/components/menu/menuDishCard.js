@@ -18,15 +18,18 @@ import { MdEdit} from 'react-icons/md';
 import {getImageClass, getIcon} from '../../store/actions/imageActions'
 
 
-const menuDishCard = ({dish, removeDishFromState, positionOfDish}) => {
+const menuDishCard = ({dish, removeDishFromState, positionOfDish, btn}) => {
     if (dish === null) return null
     return (
         <div>
             <Card className="dishCard flex-row">
-                <CardImg style={{ width: 300, height: 200 }}  className="card-img-left" name={dish.title} src={ dish.url ? getImageClass(dish.url, dish.title) : logo200Image } id={dish.id} alt={dish.title}/>
-                <CardBody>
-                    <CardTitle>{dish.title}</CardTitle>
-                    <CardText>{dish.description}</CardText>
+                <CardImg style={{ width: 300, height: 200 }}  className="card-img-left col-6" name={dish.title} src={ dish.url ? getImageClass(dish.url, dish.title) : logo200Image } id={dish.id} alt={dish.title}/>
+                <CardBody className="col-6">
+                    <CardTitle className="text-primary h5">{dish.title}</CardTitle>
+                    <CardText>
+                        <span className="small">{dish.description}</span>
+                        <p className=""> {dish.price} €</p>
+                    </CardText>
                     <Row>
                         <Col>
                             {dish && dish.allergens.map(allergen =>{
@@ -39,9 +42,11 @@ const menuDishCard = ({dish, removeDishFromState, positionOfDish}) => {
                             })}
                         </Col>
                     </Row>
+                    {btn === true ? 
                     <Row className="mt-4">
                         <Button type="button" color="secondary" className="mx-auto" id="updateDish" onClick={() => {removeDishFromState(positionOfDish)}} >Remove from menu <MdEdit></MdEdit></Button>
                     </Row>
+                    : null}
                 </CardBody>
             </Card>
         </div>

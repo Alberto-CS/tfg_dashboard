@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { deleteMenu } from '../../store/actions/menuActions'
+import MenuDishCard  from './menuDishCard'
+
 
 import {
   Card,
@@ -20,11 +22,13 @@ const menuCard = ({menu, deleteMenu}) => {
         <div>
             <Card className="dishCard">
                 <CardBody>
-                    <CardTitle>{menu.title}</CardTitle>
+                    <CardTitle className="text-secondary h5">{menu.title}</CardTitle>
                     <CardText>{menu.description}</CardText>
                     <Row>
                         <Col>
-                            {menu && menu.dishes.map(dish =>{ return (<p>{dish.title}</p>)})}
+                            {menu && menu.dishes.map(dish =>{ return (
+                                <MenuDishCard dish={dish} key={dish.id} />
+                            )})}
                         </Col>
                     </Row>
                     <Row className="mt-4">

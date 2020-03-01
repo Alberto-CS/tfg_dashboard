@@ -11,7 +11,7 @@ import { compose } from 'redux'
 
 class CreateMenu extends Component {
     state = {
-        title: 'Title',
+        title: 'Menu Name',
         dishes: [],
         showSpicy: false,
         showVegetarian: false,
@@ -113,46 +113,37 @@ class CreateMenu extends Component {
                                             </div>
                                         </Col>                                
                                     </Row>
-                                                                       
                                     <div className="container mx-auto">
                                     <Row>
                                         <h5 className="mt-4 text-secondary h5">Show</h5>
                                     </Row>
                                     <Row className="mt-2">
-                                        <span className="col-4">
-                                            <label>
-                                                <input type="checkbox" onChange={() => (this.show("showAllergens"))} checked={this.state.showAllergens}/> Allergens 
-                                            </label>
+                                        <span className="col-4 custom-switch ">
+                                            <input type="checkbox" className="custom-control-input" id="Switch1" onChange={() => (this.show("showAllergens"))} checked={this.state.showAllergens}/>
+                                            <label className="custom-control-label" for="Switch1"> Allergens</label>
                                         </span>
-
-                                        <span className="col-4">                                            
-                                            <label>
-                                                <input type="checkbox" onChange={() => (this.show("showCategory"))} checked={this.state.showCategory}/> Category 
-                                            </label>
+                                        <span className="col-4 custom-switch">                                            
+                                            <input disabled type="checkbox" className="custom-control-input" id="Switch2" onChange={() => (this.show("showCategory"))} checked={this.state.showCategory}/> 
+                                            <label className="custom-control-label" for="Switch2"> Category</label>
                                         </span>
-                                        <span className="col-4">                                            
-                                            <label>
-                                                <input type="checkbox" onChange={() => (this.show("showImage"))} checked={this.state.showImage}/> Image 
-                                            </label>
+                                        <span className="col-4 custom-switch">                                            
+                                            <input type="checkbox" className="custom-control-input" id="Switch3" onChange={() => (this.show("showImage"))} checked={this.state.showImage}/> 
+                                            <label className="custom-control-label" for="Switch3"> Image</label>
                                         </span>
-
                                     </Row>
                                     <Row className="mt-2">
-                                        <span className="col-4">
-                                        <label>
-                                            <input type="checkbox"
-                                            onChange={() => (this.show("showPrice"))} checked={this.state.showPrice}/> Price </label>
+                                        <span className="col-4 custom-switch">                                            
+                                            <input type="checkbox" className="custom-control-input" id="Switch4" onChange={() => (this.show("showPrice"))} checked={this.state.showPrice}/> 
+                                            <label className="custom-control-label" for="Switch4"> Price</label>
                                         </span>
-                                        <span className="col-4">
-                                        <label>
-                                            <input type="checkbox" 
-                                            onChange={() => (this.show("showSpicy"))} checked={this.state.showSpicy}/> Spicy </label>
+                                        <span className="col-4 custom-switch">                                            
+                                            <input disabled type="checkbox" className="custom-control-input" id="Switch5" onChange={() => (this.show("showSpicy"))} checked={this.state.showSpicy}/> 
+                                            <label className="custom-control-label" for="Switch5"> Spicy</label>
                                         </span>
-                                        <span className="col-4">
-                                        <label>
-                                            <input type="checkbox"
-                                            onChange={() => (this.show("showVegetarian"))} checked={this.state.showVegetarian}/> Veggie </label>
-                                        </span>
+                                        <span className="col-4 custom-switch">                                            
+                                            <input disabled type="checkbox" className="custom-control-input" id="Switch6" onChange={() => (this.show("showVegetarian"))} checked={this.state.showVegetarian}/> 
+                                            <label className="custom-control-label" for="Switch6"> Vegetarian</label>
+                                        </span>                                                                                                                        
                                     </Row>
                                     </div>                                     
                                     <Row className="mt-4">
@@ -164,7 +155,7 @@ class CreateMenu extends Component {
                         {this.state.dishes && this.state.dishes.map((dish, index) =>{
                                 return (
                                 <div className="mx-auto" key={index}>
-                                    <MenuDishCard dish={dish} key={index} positionOfDish={index} removeDishFromState={this.removeDishFromState} />
+                                    <MenuDishCard dish={dish} key={index} positionOfDish={index} removeDishFromState={this.removeDishFromState} btn={true} />
                                 </div>)
                             })}
                         </CardFooter>

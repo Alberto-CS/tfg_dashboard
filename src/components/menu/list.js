@@ -24,8 +24,8 @@ class List extends Component {
                     {menues && menues.map(menu =>{
                         if (menu.restaurantId === auth.uid){
                         return (
-                        <div className="col-3 mx-auto">
-                            <MenuCard menu={menu}></MenuCard>
+                        <div className="col-6 mx-auto">
+                            <MenuCard menu={menu} btn={false}></MenuCard>
                         </div>)
                         }else{
                             return null;
