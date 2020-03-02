@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteMenu } from '../../store/actions/menuActions'
 import MenuDishCard  from './menuDishCard'
-
+import {Link} from 'react-router-dom'
 
 import {
   Card,
@@ -27,12 +27,12 @@ const menuCard = ({menu, deleteMenu}) => {
                     <Row>
                         <Col>
                             {menu && menu.dishes.map(dish =>{ return (
-                                <MenuDishCard dish={dish} key={dish.id} />
+                                <MenuDishCard dish={dish} key={dish.id} menu={menu} />
                             )})}
                         </Col>
                     </Row>
                     <Row className="mt-4">
-                        <Button type="button" color="primary" className="mx-auto" id="updateDish" onClick={() => {console.log("intento hacer update")}} >Update <MdEdit></MdEdit></Button>
+                        <Link className="mx-auto" to={{pathname: '/menu/update', menu}}><Button type="button" color="primary"  id="updateDish">Update <MdEdit></MdEdit></Button></Link>
                         <Button type="button" className="mx-auto" id="deleteDish" onClick={() => {deleteMenu(menu)}} >Delete <MdDelete></MdDelete></Button>
                     </Row>
                 </CardBody>

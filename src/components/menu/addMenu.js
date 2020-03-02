@@ -155,7 +155,7 @@ class CreateMenu extends Component {
                         {this.state.dishes && this.state.dishes.map((dish, index) =>{
                                 return (
                                 <div className="mx-auto" key={index}>
-                                    <MenuDishCard dish={dish} key={index} positionOfDish={index} removeDishFromState={this.removeDishFromState} btn={true} />
+                                    <MenuDishCard dish={dish} key={index} positionOfDish={index} removeDishFromState={this.removeDishFromState} btn={true} menu={this.state}/>
                                 </div>)
                             })}
                         </CardFooter>

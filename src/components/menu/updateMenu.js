@@ -11,14 +11,14 @@ import { compose } from 'redux'
 
 class UpdateMenu extends Component {
     state = {
-        title: 'Title',
-        dishes: [],
-        showSpicy: this.showSpicy,
-        showVegetarian: this.showVegetarian,
-        showAllergens: this.showAllergens,
-        showPrice: this.showPrice,
-        showCategory: this.showCategory,
-        showImage: this.showImage,
+        title: this.props.location.menu.title,
+        dishes: this.props.location.menu.dishes,
+        showSpicy: this.props.location.menu.showSpicy,
+        showVegetarian: this.props.location.menu.showVegetarian,
+        showAllergens: this.props.location.menu.showAllergens,
+        showPrice: this.props.location.menu.showPrice,
+        showCategory: this.props.location.menu.showCategory,
+        showImage: this.props.location.menu.showImage,
     }
     
     index = {
@@ -26,8 +26,34 @@ class UpdateMenu extends Component {
     }
 
     show = (e) => {
-        //TODO: toggle para mostrar o no ciertas cosas           
+        //TODO: toggle para mostrar o no ciertas cosas
+        switch (e){
+            case "showAllergens":
+                this.setState({showAllergens: !this.state.showAllergens})
+                break
+            case "showCategory":
+                this.setState({showCategory: !this.state.showCategory})
+                break
+            case "showImage":
+                this.setState({showImage: !this.state.showImage})
+                break
+            case "showPrice":
+                this.setState({showPrice: !this.state.showPrice})
+                break
+            case "showSpicy":
+                this.setState({showSpicy: !this.state.showSpicy})
+                break
+            case "showVegetarian":
+                this.setState({showVegetarian: !this.state.showVegetarian})
+                break
+            default:
+                console.log("Caso por defecto Switch")
+        }
+        console.log(this.state)
+                   
     }
+
+
 
     handleChange = (e) => {
         this.setState({[e.target.id]: e.target.value})
@@ -36,7 +62,7 @@ class UpdateMenu extends Component {
         e.preventDefault();
         if (e.target.id === "addMenu"){
             this.props.createMenu(this.state)
-        }
+        }        
     }
 
     addDishToState = (dish) => {
@@ -72,31 +98,54 @@ class UpdateMenu extends Component {
                     <CardHeader className="text-primary display-4">{this.state.title}</CardHeader>
                         <CardBody>
                             <Form onSubmit={ this.handleSubmit }>
-                                    <div className="row flex-wrap d-flex">
-                                        <div className="col-6 mx-auto">
-                                            <Row>
-                                                <Col className="mx-auto mt-1">
-                                                    <label className="text-secondary h5" htmlFor="title">Title</label>
-                                                    <input type="form-control" id="title" onChange={ this.handleChange } />
-                                                </Col>                                       
-                                            </Row>
-
-                                        </div>
-                                        <div className="col-4 mx-auto">                                            
-                                            <Row className="mt-2">
+                                    <Row>
+                                        <Col className="col-8 mx-auto mt-1">
+                                            <h5 className="text-secondary h5" htmlFor="title">Title</h5>
+                                            <input type="form-control" id="title" onChange={ this.handleChange } value={this.state.title}/>
+                                        </Col>
+                                        <Col className="mt-2 col-4 mx-auto">
                                             <h5 className="text-primary mx-auto">Additional languages:</h5>
                                             <div className="btn-group mx-auto">
-                                                <button className="btn btn-secondary">EN</button>
-                                                <button className="btn btn-secondary">SP</button>
-                                                <button className="btn btn-secondary">FR</button>
-                                                <button className="btn btn-secondary">GE</button>
+                                                <button className="btn btn-secondary" disabled>EN</button>
+                                                <button className="btn btn-secondary" disabled>SP</button>
+                                                <button className="btn btn-secondary" disabled>FR</button>
+                                                <button className="btn btn-secondary" disabled>GE</button>
                                             </div>
-                                            </Row>                                
-                                        </div>
-                                    </div>
-                                    <Row className="mt-4">
-
+                                        </Col>                                
                                     </Row>
+                                    <div className="container mx-auto">
+                                    <Row>
+                                        <h5 className="mt-4 text-secondary h5">Show</h5>
+                                    </Row>
+                                    <Row className="mt-2">
+                                        <span className="col-4 custom-switch ">
+                                            <input type="checkbox" className="custom-control-input" id="Switch1" onChange={() => (this.show("showAllergens"))} checked={this.state.showAllergens}/>
+                                            <label className="custom-control-label" for="Switch1"> Allergens</label>
+                                        </span>
+                                        <span className="col-4 custom-switch">                                            
+                                            <input disabled type="checkbox" className="custom-control-input" id="Switch2" onChange={() => (this.show("showCategory"))} checked={this.state.showCategory}/> 
+                                            <label className="custom-control-label" for="Switch2"> Category</label>
+                                        </span>
+                                        <span className="col-4 custom-switch">                                            
+                                            <input type="checkbox" className="custom-control-input" id="Switch3" onChange={() => (this.show("showImage"))} checked={this.state.showImage}/> 
+                                            <label className="custom-control-label" for="Switch3"> Image</label>
+                                        </span>
+                                    </Row>
+                                    <Row className="mt-2">
+                                        <span className="col-4 custom-switch">                                            
+                                            <input type="checkbox" className="custom-control-input" id="Switch4" onChange={() => (this.show("showPrice"))} checked={this.state.showPrice}/> 
+                                            <label className="custom-control-label" for="Switch4"> Price</label>
+                                        </span>
+                                        <span className="col-4 custom-switch">                                            
+                                            <input disabled type="checkbox" className="custom-control-input" id="Switch5" onChange={() => (this.show("showSpicy"))} checked={this.state.showSpicy}/> 
+                                            <label className="custom-control-label" for="Switch5"> Spicy</label>
+                                        </span>
+                                        <span className="col-4 custom-switch">                                            
+                                            <input disabled type="checkbox" className="custom-control-input" id="Switch6" onChange={() => (this.show("showVegetarian"))} checked={this.state.showVegetarian}/> 
+                                            <label className="custom-control-label" for="Switch6"> Vegetarian</label>
+                                        </span>                                                                                                                        
+                                    </Row>
+                                    </div>                                     
                                     <Row className="mt-4">
                                         <button id="addMenu" className="btn btn-primary btn-sm btn-block" onClick={this.handleSubmit}>Add menu</button>
                                     </Row>                    
@@ -106,7 +155,7 @@ class UpdateMenu extends Component {
                         {this.state.dishes && this.state.dishes.map((dish, index) =>{
                                 return (
                                 <div className="mx-auto" key={index}>
-                                    <MenuDishCard dish={dish} key={index} positionOfDish={index} removeDishFromState={this.removeDishFromState} />
+                                    <MenuDishCard dish={dish} key={index} positionOfDish={index} removeDishFromState={this.removeDishFromState} btn={true} menu={this.state}/>
                                 </div>)
                             })}
                         </CardFooter>
