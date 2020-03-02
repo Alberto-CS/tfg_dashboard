@@ -12,13 +12,13 @@ export const createMenu = (menu) => {
     }
 }
 
-export const updateMenu = (menu) => {
+export const updateMenu = (menu, id) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
-        firestore.collection('menu').doc(menu.id).update({
+        firestore.collection('menu').doc(id).update({
             ...menu,
         }).then(() => {
-            dispatch({ type: 'UPDATE_MENU', menu });
+            dispatch({ type: 'UPDATE_MENU'});
         }).catch((err) => {
             dispatch({ type: 'UPDATE_MENU_ERROR', err });
         })

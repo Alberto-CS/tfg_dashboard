@@ -2,7 +2,7 @@ import  React, {Component } from 'react'
 import DishCard  from './dishCard'
 import MenuDishCard  from './menuDishCard'
 import { connect } from 'react-redux'
-import { createMenu } from '../../store/actions/menuActions'
+import { updateMenu } from '../../store/actions/menuActions'
 import { Redirect } from 'react-router-dom'
 import { Card, CardBody, CardHeader, Col, Form, Row, CardFooter } from 'reactstrap';
 import { firestoreConnect} from 'react-redux-firebase'
@@ -61,7 +61,7 @@ class UpdateMenu extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         if (e.target.id === "addMenu"){
-            this.props.createMenu(this.state)
+            this.props.updateMenu(this.state, this.props.location.menu.id)
         }        
     }
 
@@ -176,7 +176,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createMenu: (menu) => dispatch(createMenu(menu)),
+        updateMenu: (menu, id) => dispatch(updateMenu(menu, id)),
     }
 }
 

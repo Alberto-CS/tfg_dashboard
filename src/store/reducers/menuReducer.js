@@ -11,6 +11,7 @@ const menuReducer = (state = initState, action) => {
             return state;
         case 'UPDATE_MENU': 
             console.log('Menu updated', action.dishes)
+            setTimeout(function(){ window.location.href = './list';}, 1500);
             return state;
         case 'UPDATE_MENU_ERROR':
             console.log('Menu updated error', action.err);
