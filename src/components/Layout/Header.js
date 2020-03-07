@@ -10,8 +10,6 @@ import { signOut} from '../../store/actions/authActions'
 import {
   MdClearAll,
   MdExitToApp,
-  MdHelp,
-  MdMessage,
   MdNotificationsActive,
   MdNotificationsNone,
   MdPersonPin,
@@ -41,7 +39,7 @@ const MdNotificationsActiveWithBadge = withBadge({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  children: <small>5</small>,
+  children: <small>2</small>,
 })(MdNotificationsActive);
 
 class Header extends React.Component {
@@ -142,12 +140,6 @@ class Header extends React.Component {
                   <ListGroup flush>
                     <ListGroupItem tag="button" action className="border-light">
                       <MdPersonPin /> Profile
-                    </ListGroupItem>
-                    <ListGroupItem tag="button" action className="border-light">
-                      <MdMessage /> Messages
-                    </ListGroupItem>
-                    <ListGroupItem tag="button" action className="border-light">
-                      <MdHelp /> Help
                     </ListGroupItem>
                     <ListGroupItem onClick={this.props.signOut} tag="button" action className="border-light">
                       <MdExitToApp /> Signout

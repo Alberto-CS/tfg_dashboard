@@ -1,6 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { deleteDish } from '../../store/actions/dishActions'
 import {
   Card,
   CardBody,
@@ -9,16 +7,19 @@ import {
   CardTitle,
   Col,
   Row,
+  CardHeader,
 } from 'reactstrap';
 
 import logo200Image from 'assets/img/logo/logo_200.png';
-import {getIcon} from '../../store/actions/imageActions'
+import {getIcon, getImageClass} from '../../store/actions/imageActions'
 
 
-const dishCard = ({dish, deleteDish}) => {
+const dishCard = ({dish}) => {
+    console.log(dish)
     return (
         <Card className="dishCard">
-            <CardImg top src={ logo200Image }  id="output" alt={dish.title}/>
+            {dish.url ? <CardHeader className="text-primary"><h5 className="">Dish Most Sold</h5></CardHeader> : null}
+            <CardImg top name={dish.title} src={ dish.url ? getImageClass(dish.url, dish.title) : logo200Image }  id="output" alt={dish.title}/>
             <CardBody>
                 <CardTitle>{dish.title}</CardTitle>
                 <CardText>{dish.description}</CardText>
@@ -40,15 +41,7 @@ const dishCard = ({dish, deleteDish}) => {
     )
 }
 
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        deleteDish: (dish) => dispatch(deleteDish(dish))
-    }
-}
-
-
-export default connect(null, mapDispatchToProps) (dishCard)
+export default  (dishCard)
 
 
 

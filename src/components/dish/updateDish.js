@@ -67,7 +67,6 @@ class UpdateDish extends Component {
             if (this.image.file !== ''){
                 addImage(this.image.file, this.state.url)
             }
-            console.log(this.state)
             this.props.updateDish(this.state, this.props.dishId)
         }
     }    
