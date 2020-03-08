@@ -76,14 +76,14 @@ class CreateMenu extends Component {
     }
 
     render() {
-        const { dishes, auth} = this.props;
+        const { dishes, auth, profile} = this.props;
         if (! auth.uid && auth.isLoaded) return <Redirect to='/login' />
         return (
             <div>
                 <Row className="d-flex flex-wrap ">
                     <div className="align-self-center col-5 justify-content-center mx-auto ">
                         {dishes && dishes.map(dish =>{
-                            if (dish.restaurantId === auth.uid){
+                            if (dish.restaurantId === profile.restaurant){
                             return (
                             <div className="mx-auto" key={dish.id}>
                                 <DishCard dish={dish} key={dish.id} addDishToState={this.addDishToState}/>
@@ -170,7 +170,8 @@ class CreateMenu extends Component {
 const mapStateToProps = (state) => {
     return {
         dishes: state.firestore.ordered.platos,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile,
     }
   }
 
