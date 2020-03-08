@@ -99,11 +99,11 @@ class UpdateDish extends Component {
                                                         <label className="ml-1" htmlFor="price">€</label>
                                                     </div>
                                                     <select className="mx-auto mt-2 d-none">
-                                                        <option value="plato" disabled selected>Tipo de plato</option>
-                                                        <option value="Entremeses">Entremeses</option>
-                                                        <option value="Plato-Principal">Plato Principal</option>
-                                                        <option value="Postre">Postre</option>
-                                                        <option value="Bebida">Bebida</option>
+                                                        <option disabled selected>Tipo de plato</option>
+                                                        <option value="0">Entremeses</option>
+                                                        <option value="1">Plato Principal</option>
+                                                        <option value="2">Postre</option>
+                                                        <option value="3">Bebida</option>
                                                     </select>
                                                 </Col>
                                             </Row>

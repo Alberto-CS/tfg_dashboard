@@ -96,41 +96,38 @@ class CreateDish extends Component {
                             <Form onSubmit={ this.handleSubmit }>
                                     <div className="row flex-wrap d-flex">
                                         <div className="col-6 mx-auto">
-                                            <h5 className="text-primary h5">Dish Data</h5>
-                                            <Row>
-                                                <Col className="mx-auto mt-1">
+                                            <Col>
+                                                <h5 className="text-primary h5">Dish Data</h5>
+                                                <Row className="mx-auto mt-1">
                                                     <label className="text-secondary" htmlFor="title">Name</label>
-                                                    <input type="form-control" id="title" onChange={ this.handleChange } />
-                                                </Col>
-                                                <Col className="mx-auto mt-1">
+                                                    <input className="form-control" type="form-control" id="title" onChange={ this.handleChange } />
+                                                </Row>
+                                                <Row className="mx-auto mt-1">
                                                     <label className="text-secondary" htmlFor="textarea">Description</label>
-                                                    <textarea className="materialize-textarea" id="description" onChange= {this.handleChange}></textarea>
-                                                </Col>                                        
-                                            </Row>
-                                            <Row>
-                                                <Col className="mx-auto mt-1">
-                                                    <label className="text-secondary">Price</label>
-                                                    <div className="">
-                                                        <input type="number" id="price" onChange={ this.handleChange } />
-                                                        <label className="ml-1" htmlFor="price">€</label>
-                                                    </div>
-                                                    <select className="mx-auto mt-2 d-none">
-                                                        <option value="plato" disabled selected>Tipo de plato</option>
-                                                        <option value="Entremeses">Entremeses</option>
-                                                        <option value="Plato-Principal">Plato Principal</option>
-                                                        <option value="Postre">Postre</option>
-                                                        <option value="Bebida">Bebida</option>
-                                                    </select>
-                                                </Col>
-                                            </Row>
-                                            <Row className="mx-auto mt-4">
-                                                <h5 className="text-secondary">Image</h5>
-                                                <div className="input-field">
-                                                    <div className="btn brown">
-                                                        <input type="file" id="url" onChange={this.handleChange}/>
-                                                    </div>
+                                                    <textarea className="form-control" id="description" onChange= {this.handleChange}></textarea>
+                                                </Row>
+                                                <Row className="mx-auto mt-1">
+                                                    
+                                                </Row>                                      
+                                            </Col>
+                                            <Col className="mt-1">
+                                                <label className="text-secondary">Price</label>
+                                                <div className="">
+                                                    <input placeholder="€" className="form-control" type="number" id="price" onChange={ this.handleChange } />
+                                                    
                                                 </div>
-                                            </Row>
+                                                <select className="form-control mt-2 d-flex justify-content-start" disabled>
+                                                    <option value="0" disabled selected>Choose a category</option>
+                                                    <option value="1">Entremeses</option>
+                                                    <option value="2">Plato Principal</option>
+                                                    <option value="3">Postre</option>
+                                                    <option value="4">Bebida</option>
+                                                </select>
+                                            </Col>
+                                            <Col className="mt-3">
+                                                <h5 className="text-secondary">Image</h5>
+                                                <input  type="file" id="url" onChange={this.handleChange}/>
+                                            </Col>
                                         </div>
                                         <div className="col-4 mx-auto">                                            
                                             <Row className="mt-2">
