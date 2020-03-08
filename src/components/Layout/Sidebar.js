@@ -1,6 +1,5 @@
 import logo200Image from 'assets/img/logo/logo_200.png';
 import sidebarBgImage from 'assets/img/sidebar/sidebar-4.jpg';
-import SourceLink from 'components/SourceLink';
 import React from 'react';
 import {
   MdDashboard,
@@ -25,7 +24,6 @@ import {
 import bn from 'utils/bemnames';
 
 const sidebarBackground = {
-  //backgroundImage: `url("${sidebarBgImage}")`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
 };
@@ -73,7 +71,7 @@ class Sidebar extends React.Component {
         <div className={bem.e('background')} style={sidebarBackground} />
         <div className={bem.e('content')}>
           <Navbar>
-            <SourceLink className="navbar-brand d-flex">
+            <a href="/" className="navbar-brand d-flex">
               <img
                 src={logo200Image}
                 width="200"
@@ -81,7 +79,7 @@ class Sidebar extends React.Component {
                 className="pr-2"
                 alt=""
               />
-            </SourceLink>
+            </a>
           </Navbar>
           <Nav vertical>
             {navItems.map(({ to, name, exact, Icon }, index) => (

@@ -27,8 +27,8 @@ import lacteos  from '../../images&icons/food/lacteos.png'
 
 class CreateDish extends Component {
     state = {
-        title: 'Nombre del plato',
-        description: 'Descripción del plato',
+        title: 'Name',
+        description: 'Description',
         url: '',
         price: '',
         allergens: [
