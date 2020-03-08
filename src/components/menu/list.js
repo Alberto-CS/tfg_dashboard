@@ -16,13 +16,13 @@ class List extends Component {
     };    
            
     render(){
-        const { menues, auth} = this.props;
+        const { menues, auth, profile} = this.props;
         if (! auth.uid && auth.isLoaded) return <Redirect to='/login' />
         return (
             <div>
                 <div className="d-flex flex-wrap">
                     {menues && menues.map(menu =>{
-                        if (menu.restaurantId === auth.uid){
+                        if (menu.restaurantId === profile.restaurant){
                         return (
                         <div className="col-6 mx-auto">
                             <MenuCard menu={menu} btn={false}></MenuCard>
@@ -41,6 +41,7 @@ const mapStateToProps = (state) => {
     return {
         menues: state.firestore.ordered.menu,
         auth: state.firebase.auth,
+        profile: state.firebase.profile,
     }
 }
 

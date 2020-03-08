@@ -19,13 +19,13 @@ class List extends Component {
     };    
            
     render(){
-        const { dishes, auth} = this.props;
+        const { dishes, auth, profile} = this.props;
         if (! auth.uid && auth.isLoaded) return <Redirect to='/login' />
         return (
             <div>
                 <div className="d-flex flex-wrap">
                     {dishes && dishes.map(dish =>{
-                        if (dish.restaurantId === auth.uid){
+                        if (dish.restaurantId === profile.restaurant){
                         return (
                         <div className="col-3 mx-auto">
                             <DishCard className="dishcard" dish={dish} key={dish.id} toggle = {this.toggle} />                                                                            
@@ -53,6 +53,7 @@ const mapStateToProps = (state) => {
     return {
         dishes: state.firestore.ordered.platos,
         auth: state.firebase.auth,
+        profile: state.firebase.profile,
     }
 }
 

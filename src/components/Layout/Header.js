@@ -26,6 +26,7 @@ import {
   PopoverBody,
 } from 'reactstrap';
 import bn from 'utils/bemnames';
+import {Redirect} from 'react-router-dom'
 
 const bem = bn.create('header');
 
@@ -71,6 +72,11 @@ class Header extends React.Component {
 
     document.querySelector('.cr-sidebar').classList.toggle('cr-sidebar--open');
   };
+
+  userProfile = () => {
+    return <Redirect to='/user/profile' />
+  }
+  
 
   render() {
     const { isNotificationConfirmed} = this.state;
@@ -138,7 +144,7 @@ class Header extends React.Component {
                   className="border-light"
                 >
                   <ListGroup flush>
-                    <ListGroupItem tag="button" action className="border-light">
+                    <ListGroupItem onClick={this.userProfile} tag="button" action className="border-light">
                       <MdPersonPin /> Profile
                     </ListGroupItem>
                     <ListGroupItem onClick={this.props.signOut} tag="button" action className="border-light">

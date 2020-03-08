@@ -47,8 +47,8 @@ class App extends React.Component {
                 <Route path='/menu/list' component={ListMenu} />
                 <Route path='/menu/add' component={CreateMenu} />
                 <Route path='/menu/update' component={UpdateMenu} />
-                <Route path='/restaurant/profile' component={ListRestaurant} />                
-                
+                <Route path='/restaurant/profile' component={ListRestaurant} />
+                <Route path='/user/profile' component={ListRestaurant} />                
               </React.Suspense>
             </MainLayout>
             <Redirect to="/" />

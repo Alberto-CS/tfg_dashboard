@@ -4,13 +4,17 @@ import RestaurantCard from './restaurantCard'
 import { firestoreConnect} from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
+import {selectRestaurant} from '../../store/actions/restaurantActions'
 
 class Restaurants extends Component {
-    
+  
 
-    getRestaurant = (e) => {
-    
-    } 
+
+    selectRestaurant = (restaurantSelected) => {
+        console.log(restaurantSelected)
+        this.props.selectRestaurant(restaurantSelected, "8q8NCKAS7CQhtrPBuTMeWWCyN6t1")
+        console.log("he cambiado el estado " + this.props.profile.restaurant)
+    }
     
     render(){
         const { restaurants, auth, profile} = this.props;
@@ -18,11 +22,19 @@ class Restaurants extends Component {
         return (
             <div>
                 <div className="d-flex flex-wrap">
-                    {restaurants && restaurants.map(restaurant =>{
-                        return (
-                        <div className="col-6 mx-auto">
-                            <h1>{restaurant.name}</h1>
-                        </div>)
+                    {restaurants && restaurants.map(restaurant => {
+                        if (typeof profile.own !== "undefined"){
+                            if ( profile.own.includes(restaurant.name) ){
+                                return (
+                                <div className="col-3 mx-auto">
+                                    <RestaurantCard restaurant={restaurant} profile={profile.restaurant} selectRestaurant={this.selectRestaurant} ></RestaurantCard>
+                                </div>)
+                            } else {
+                                return null
+                            } 
+                        } else {
+                            return null
+                        }
                     })}
                 </div>                           
             </div>
@@ -39,8 +51,14 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        selectRestaurant: (restaurant, id) => dispatch(selectRestaurant(restaurant, id)),
+    }
+}
+
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
         {collection: 'platos'},
         {collection: 'restaurantes'},
