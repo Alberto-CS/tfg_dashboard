@@ -18,7 +18,7 @@ const dishCard = ({dish}) => {
     console.log(dish)
     return (
         <Card className="dishCard">
-            {dish.url ? <CardHeader className="text-primary d-flex justify-content-center"><h5 className="">Dish Most Sold</h5></CardHeader> : null}
+            {dish.url ? <CardHeader className="text-primary d-flex justify-content-center"><h5 className="">Best Dish</h5></CardHeader> : null}
             <CardImg top name={dish.title} src={ dish.url ? getImageClass(dish.url, dish.title) : logo200Image }  id="output" alt={dish.title}/>
             <CardBody>
                 <CardTitle className="text-secondary d-flex justify-content-center">{dish.title}</CardTitle>

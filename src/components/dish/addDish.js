@@ -109,7 +109,7 @@ class CreateDish extends Component {
                                             </Row>
                                             <Row>
                                                 <Col className="mx-auto mt-1">
-                                                    <label className="text-secondary" htmlFor="textarea">Price</label>
+                                                    <label className="text-secondary">Price</label>
                                                     <div className="">
                                                         <input type="number" id="price" onChange={ this.handleChange } />
                                                         <label className="ml-1" htmlFor="price">€</label>

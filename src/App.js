@@ -15,6 +15,7 @@ import ListMenu from './components/menu/list'
 import CreateMenu  from './components/menu/addMenu'
 import UpdateMenu  from './components/menu/updateMenu'
 import ListRestaurant from './components/restaurant/list'
+import UserProfile from './components/user/profile'
 
 const DashboardPage = React.lazy(() => import('pages/DashboardPage'));
 
@@ -48,7 +49,7 @@ class App extends React.Component {
                 <Route path='/menu/add' component={CreateMenu} />
                 <Route path='/menu/update' component={UpdateMenu} />
                 <Route path='/restaurant/profile' component={ListRestaurant} />
-                <Route path='/user/profile' component={ListRestaurant} />                
+                <Route path='/user/profile' component={UserProfile} />                
               </React.Suspense>
             </MainLayout>
             <Redirect to="/" />

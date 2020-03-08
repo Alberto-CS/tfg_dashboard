@@ -20,7 +20,7 @@ const restaurantCard = ({restaurant, profile, selectRestaurant}) => {
                 <CardText className="d-flex justify-content-center">{restaurant.description}</CardText>
             </CardBody>
             {(restaurant.name === profile)
-            ? <button className="btn btn-secondary btn-sm btn-block" disabled> Selected Restaurant</button>
+            ? <button className="btn btn-secondary btn-sm btn-block" disabled> Restaurant Selected</button>
             : <button className="btn btn-primary btn-sm btn-block" name={restaurant.name} onClick={ () => selectRestaurant(restaurant.name, profile.id)}> Select Restaurant</button>            
             }
         </Card>

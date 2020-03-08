@@ -1,9 +1,9 @@
-export const createMenu = (menu) => {
+export const createMenu = (menu, id) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('menu').add({
             ...menu,
-            restaurantId: getState().firebase.auth.uid
+            restaurantId: id
         }).then(() => {
             dispatch({ type: 'CREATE_MENU', menu });
         }).catch((err) => {

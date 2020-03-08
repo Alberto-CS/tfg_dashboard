@@ -19,6 +19,8 @@ class CreateMenu extends Component {
         showPrice: false,
         showCategory: false,
         showImage: true,
+        description: '',
+        price: '',
     }
     
     index = {
@@ -26,7 +28,6 @@ class CreateMenu extends Component {
     }
 
     show = (e) => {
-        //TODO: toggle para mostrar o no ciertas cosas
         switch (e){
             case "showAllergens":
                 this.setState({showAllergens: !this.state.showAllergens})
@@ -61,7 +62,7 @@ class CreateMenu extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         if (e.target.id === "addMenu"){
-            this.props.createMenu(this.state)
+            this.props.createMenu(this.state, this.props.profile.restaurant)
         }
     }
 
@@ -100,8 +101,18 @@ class CreateMenu extends Component {
                             <Form onSubmit={ this.handleSubmit }>
                                     <Row>
                                         <Col className="col-8 mx-auto mt-1">
-                                            <h5 className="text-secondary h5" htmlFor="title">Title</h5>
-                                            <input type="form-control" id="title" onChange={ this.handleChange } />
+                                            <Row>
+                                                <h5 className="text-secondary h5" htmlFor="title">Title</h5>
+                                                <input className="ml-4" type="form-control" id="title" onChange={ this.handleChange } />
+                                            </Row>
+                                            <Row className="mt-4">
+                                                <label className="text-secondary h5">Price</label>
+                                                    <div className="mx-auto">
+                                                        <input type="number" id="price" onChange={ this.handleChange } />
+                                                        <label className="ml-1" htmlFor="price">€</label>
+                                                    </div>
+                                            </Row>
+                                            
                                         </Col>
                                         <Col className="mt-2 col-4 mx-auto">
                                             <h5 className="text-primary mx-auto">Additional languages:</h5>
@@ -113,6 +124,14 @@ class CreateMenu extends Component {
                                             </div>
                                         </Col>                                
                                     </Row>
+                                        <div className="container mt-4 mx-auto">
+                                            <Row>
+                                                <h5 className="mt-4 text-secondary h5">Description</h5>
+                                            </Row>
+                                            <Row>                                                
+                                                <textarea className="form-control" id="description" onChange= {this.handleChange}></textarea>
+                                            </Row>
+                                        </div>
                                     <div className="container mx-auto">
                                     <Row>
                                         <h5 className="mt-4 text-secondary h5">Show</h5>
@@ -177,7 +196,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createMenu: (menu) => dispatch(createMenu(menu)),
+        createMenu: (menu, restaurant) => dispatch(createMenu(menu, restaurant)),
     }
 }
 

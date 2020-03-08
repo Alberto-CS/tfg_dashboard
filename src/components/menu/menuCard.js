@@ -22,8 +22,11 @@ const menuCard = ({menu, deleteMenu}) => {
         <div>
             <Card className="dishCard">
                 <CardBody>
-                    <CardTitle className="text-secondary h5">{menu.title}</CardTitle>
-                    <CardText>{menu.description}</CardText>
+                    <CardTitle className="text-secondary h5 d-flex justify-content-center">{menu.title}</CardTitle>
+                    <CardText className="col">
+                        <Row className="text-primary h6 d-flex justify-content-center ">{menu.description}</Row>
+                        <Row className="text-primary h4 d-flex justify-content-center">Price: {menu.price} €</Row>
+                    </CardText>
                     <Row>
                         <Col>
                             {menu && menu.dishes.map(dish =>{ return (

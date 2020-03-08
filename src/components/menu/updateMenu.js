@@ -19,6 +19,8 @@ class UpdateMenu extends Component {
         showPrice: this.props.location.menu.showPrice,
         showCategory: this.props.location.menu.showCategory,
         showImage: this.props.location.menu.showImage,
+        description: this.props.location.menu.description,
+        price: this.props.location.menu.price,
     }
     
     index = {
@@ -49,8 +51,6 @@ class UpdateMenu extends Component {
             default:
                 console.log("Caso por defecto Switch")
         }
-        console.log(this.state)
-                   
     }
 
 
@@ -76,14 +76,14 @@ class UpdateMenu extends Component {
     }
 
     render() {
-        const { dishes, auth} = this.props;
+        const { dishes, auth, profile} = this.props;
         if (! auth.uid && auth.isLoaded) return <Redirect to='/login' />
         return (
             <div>
                 <Row className="d-flex flex-wrap ">
                     <div className="align-self-center col-5 justify-content-center mx-auto ">
                         {dishes && dishes.map(dish =>{
-                            if (dish.restaurantId === auth.uid){
+                            if (dish.restaurantId === profile.restaurant){
                             return (
                             <div className="mx-auto" key={dish.id}>
                                 <DishCard dish={dish} key={dish.id} addDishToState={this.addDishToState}/>
@@ -100,8 +100,18 @@ class UpdateMenu extends Component {
                             <Form onSubmit={ this.handleSubmit }>
                                     <Row>
                                         <Col className="col-8 mx-auto mt-1">
-                                            <h5 className="text-secondary h5" htmlFor="title">Title</h5>
-                                            <input type="form-control" id="title" onChange={ this.handleChange } value={this.state.title}/>
+                                            <Row>
+                                                <h5 className="text-secondary h5" htmlFor="title">Title</h5>
+                                                <input className="ml-4" type="form-control" id="title" onChange={ this.handleChange } value={this.state.title} />
+                                            </Row>
+                                            <Row className="mt-4">
+                                                <label className="text-secondary h5">Price</label>
+                                                    <div className="mx-auto">
+                                                        <input type="number" id="price" onChange={ this.handleChange } value={this.state.price}/>
+                                                        <label className="ml-1" htmlFor="price">€</label>
+                                                    </div>
+                                            </Row>
+                                            
                                         </Col>
                                         <Col className="mt-2 col-4 mx-auto">
                                             <h5 className="text-primary mx-auto">Additional languages:</h5>
@@ -113,6 +123,14 @@ class UpdateMenu extends Component {
                                             </div>
                                         </Col>                                
                                     </Row>
+                                    <div className="container mt-4 mx-auto">
+                                            <Row>
+                                                <h5 className="mt-4 text-secondary h5">Description</h5>
+                                            </Row>
+                                            <Row>                                                
+                                                <textarea className="form-control" id="description" onChange= {this.handleChange} value={this.state.description}></textarea>
+                                            </Row>
+                                        </div>
                                     <div className="container mx-auto">
                                     <Row>
                                         <h5 className="mt-4 text-secondary h5">Show</h5>
@@ -170,7 +188,8 @@ class UpdateMenu extends Component {
 const mapStateToProps = (state) => {
     return {
         dishes: state.firestore.ordered.platos,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile,
     }
   }
 
