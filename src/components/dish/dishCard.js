@@ -15,10 +15,9 @@ import {getIcon, getImageClass} from '../../store/actions/imageActions'
 
 
 const dishCard = ({dish}) => {
-    console.log(dish)
     return (
         <Card className="dishCard">
-            {dish.url ? <CardHeader className="text-primary d-flex justify-content-center"><h5 className="">Best Dish</h5></CardHeader> : null}
+            {dish.url ? <CardHeader className="text-primary d-flex justify-content-center"><h5>Best Dish</h5></CardHeader> : null}
             <CardImg top name={dish.title} src={ dish.url ? getImageClass(dish.url, dish.title) : logo200Image }  id="output" alt={dish.title}/>
             <CardBody>
                 <CardTitle className="text-secondary d-flex justify-content-center">{dish.title}</CardTitle>
@@ -27,7 +26,7 @@ const dishCard = ({dish}) => {
                     <Col>
                     {dish && dish.allergens.map(allergen =>{
                             if ( allergen.isInTheDish === true){
-                                return (<img className="iconAllergies mx-1" id={allergen.name} name={allergen.name}
+                                return (<img key={allergen.id} className="iconAllergies mx-1" id={allergen.name} name={allergen.name}
                                  src={ allergen.name ? getIcon(allergen.name + ".png",allergen.name) : logo200Image} alt={allergen.name}></img>)
                             }else{
                                 return null;

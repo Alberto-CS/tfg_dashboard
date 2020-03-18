@@ -1,7 +1,7 @@
-import { STATE_LOGIN, STATE_SIGNUP } from 'components/AuthForm';
-import GAListener from 'components/GAListener';
-import { EmptyLayout, LayoutRoute, MainLayout } from 'components/Layout';
-import PageSpinner from 'components/PageSpinner';
+import { STATE_LOGIN, STATE_SIGNUP } from 'components/_helpers/AuthForm';
+import GAListener from 'components/_helpers/GAListener';
+import { EmptyLayout, LayoutRoute, MainLayout } from 'components/_helpers/Layout';
+import PageSpinner from 'components/_helpers/PageSpinner';
 import AuthPage from 'pages/AuthPage';
 import React from 'react';
 import componentQueries from 'react-component-queries';

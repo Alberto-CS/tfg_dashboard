@@ -1,5 +1,5 @@
-import Page from 'components/Page';
-import {  NumberWidget } from 'components/Widget';
+import Page from 'components/_helpers/Page';
+import {  NumberWidget } from 'components/_helpers/Widget';
 import { chartjs } from 'demos/dashboardPage';
 import React from 'react';
 import {  Line } from 'react-chartjs-2';
@@ -87,7 +87,7 @@ class DashboardPage extends React.Component {
                         if (dish.id === "mux6l2JbSayp0Dqshsxy"){
                         return (
                         <div className="col-4">
-                          <DishCard dish={dish} />                                                                            
+                          <DishCard dish={dish} key={dish.id} />                                                                            
                         </div>)
                         }else{
                             return null;

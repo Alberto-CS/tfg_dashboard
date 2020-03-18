@@ -1,4 +1,4 @@
-import AuthForm, { STATE_LOGIN } from 'components/AuthForm';
+import AuthForm, { STATE_LOGIN } from 'components/_helpers/AuthForm';
 import React from 'react';
 import { Card, Col, Row } from 'reactstrap';
 

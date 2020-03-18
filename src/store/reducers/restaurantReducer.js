@@ -1,7 +1,7 @@
 const initState = {}
 
-const menuReducer = (state = initState, action) => {
+const restaurantReducer = (state = initState, action) => {
     return state
 }
 
-export default menuReducer
+export default restaurantReducer
