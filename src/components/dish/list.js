@@ -21,7 +21,6 @@ class List extends Component {
     render(){
         const { dishes, auth, profile} = this.props;
         if (! auth.uid && auth.isLoaded) return <Redirect to='/login' />
-
         return (
             <div>
                 <div className="d-flex flex-wrap">
