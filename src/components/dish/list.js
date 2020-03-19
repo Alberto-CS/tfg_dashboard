@@ -20,6 +20,7 @@ class List extends Component {
            
     render(){
         const { dishes, auth, profile} = this.props;
+        console.log(auth)
         if (! auth.uid && auth.isLoaded) return <Redirect to='/login' />
         return (
             <div>

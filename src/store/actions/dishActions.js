@@ -1,11 +1,11 @@
 
 
-export const createDish = (dish) => {
+export const createDish = (dish, restaurant) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('platos').add({
             ...dish,
-            restaurantId: getState().firebase.auth.uid
+            restaurantId: restaurant
         }).then(() => {
             dispatch({ type: 'CREATE_DISH', dish });
         }).catch((err) => {

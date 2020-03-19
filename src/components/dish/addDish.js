@@ -79,7 +79,7 @@ class CreateDish extends Component {
                 addImage(this.image.file, this.state.url)
             }
             console.log(this.state)
-            this.props.createDish(this.state)
+            this.props.createDish(this.state, this.props.profile.restaurant)
         }
     }    
     render() {
@@ -221,13 +221,14 @@ class CreateDish extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile,
     }
   }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createDish: (dish) => dispatch(createDish(dish)),
+        createDish: (dish, restaurant) => dispatch(createDish(dish, restaurant)),
     }
 }
 
