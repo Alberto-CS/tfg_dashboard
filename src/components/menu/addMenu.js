@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom'
 import { Card, CardBody, CardHeader, Col, Form, Row, CardFooter } from 'reactstrap';
 import { firestoreConnect} from 'react-redux-firebase'
 import { compose } from 'redux'
+import { getDishes } from '../../store/reducers/rootReducer'
 
 
 class CreateMenu extends Component {
@@ -188,7 +189,7 @@ class CreateMenu extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        dishes: state.firestore.ordered.platos,
+        dishes: getDishes(state.firestore.ordered.platos, state.search.search),
         auth: state.firebase.auth,
         profile: state.firebase.profile,
     }

@@ -4,6 +4,8 @@ import { firestoreConnect} from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import MenuCard from './menuCard'
+import { getDishes } from '../../store/reducers/rootReducer'
+
 
 class List extends Component {
     state = {
@@ -39,7 +41,7 @@ class List extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        menues: state.firestore.ordered.menu,
+        menues: getDishes(state.firestore.ordered.menu, state.search.search),
         auth: state.firebase.auth,
         profile: state.firebase.profile,
     }

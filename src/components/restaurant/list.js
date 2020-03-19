@@ -5,10 +5,10 @@ import { firestoreConnect} from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import {selectRestaurant} from '../../store/actions/restaurantActions'
+import { getRestaurant } from '../../store/reducers/rootReducer'
+
 
 class Restaurants extends Component {
-  
-
 
     selectRestaurant = (restaurantSelected) => {
         console.log(restaurantSelected)
@@ -44,7 +44,8 @@ class Restaurants extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        restaurants: state.firestore.ordered.restaurantes,
+        //restaurants: state.firestore.ordered.restaurantes,
+        restaurants: getRestaurant(state.firestore.ordered.restaurantes, state.search.search),
         auth: state.firebase.auth,
         profile: state.firebase.profile,
 
