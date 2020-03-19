@@ -6,34 +6,34 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import UpdateDish from './updateDish'
+import { getDishes } from '../../store/reducers/rootReducer'
 
 class List extends Component {
     state = {
         modal: false,
         dish: '',
     };
-    //TODO: Vincular update al plato
     toggle = (dish) => {
         if (dish != null) this.setState({dishId: dish})
         return this.setState({ modal: !this.state.modal, });
-    };    
+    };
            
     render(){
         const { dishes, auth, profile} = this.props;
         if (! auth.uid && auth.isLoaded) return <Redirect to='/login' />
+
         return (
             <div>
                 <div className="d-flex flex-wrap">
-                    {dishes && dishes.map(dish =>{
+                    { dishes && dishes.map(dish =>{
                         if (dish.restaurantId === profile.restaurant){
-                        return (
-                        <div className="col-3 mx-auto">
-                            <DishCard className="dishcard" dish={dish} key={dish.id} toggle = {this.toggle} />                                                                            
-                        </div>)
+                            return (
+                                <div className="col-3 mx-auto">
+                                    <DishCard className="dishcard" dish={dish} key={dish.id} toggle = {this.toggle} />                                                                            
+                                </div>)
                         }else{
-                            return null;
-                        }
-                    })}
+                            return null
+                    }})}
                 </div>
                 <Modal
                   isOpen={this.state.modal}
@@ -51,7 +51,7 @@ class List extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        dishes: state.firestore.ordered.platos,
+        dishes: getDishes(state.firestore.ordered.platos, state.search.search),
         auth: state.firebase.auth,
         profile: state.firebase.profile,
     }

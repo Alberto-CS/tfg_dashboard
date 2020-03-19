@@ -33,7 +33,7 @@ const listDishCard = ({dish, deleteDish, toggle}) => {
                     <CardText>{dish.description}</CardText>
                     <Row>
                         <Col>
-                            {dish && dish.allergens.map(allergen =>{
+                            {dish.allergens && dish.allergens.map(allergen =>{
                                 if ( allergen.isInTheDish === true){
                                 return (<img className="iconAllergies mx-1" id={allergen.name} name={allergen.name}
                                  src={ getIcon(allergen.name + ".png", allergen.name)} alt={allergen.name}></img>)

@@ -1,10 +1,3 @@
-import product1Image from 'assets/img/products/product_640-1.jpg';
-import product2Image from 'assets/img/products/product_640-2.jpg';
-import product3Image from 'assets/img/products/product_640-3.jpg';
-import product4Image from 'assets/img/products/product_640-4.jpg';
-import product5Image from 'assets/img/products/product_640-5.jpg';
-import product6Image from 'assets/img/products/product_640-6.jpg';
-
 import user1Image from 'assets/img/users/100_1.jpg';
 import user2Image from 'assets/img/users/100_2.jpg';
 import user3Image from 'assets/img/users/100_3.jpg';
@@ -20,50 +13,6 @@ import user12Image from 'assets/img/users/100_12.jpg';
 import user13Image from 'assets/img/users/100_13.jpg';
 import user14Image from 'assets/img/users/100_14.jpg';
 
-export const productsData = [
-  {
-    id: 1,
-    image: product1Image,
-    title: 'Admin Template',
-    description: 'Responsive admin template...',
-    right: '$36',
-  },
-  {
-    id: 2,
-    image: product2Image,
-    title: 'Schedule App',
-    description: 'Manage your schedule...',
-    right: '$9',
-  },
-  {
-    id: 3,
-    image: product3Image,
-    title: 'Chat App',
-    description: 'Realtime chat application...',
-    right: '$12',
-  },
-  {
-    id: 4,
-    image: product4Image,
-    title: 'Wordpress Business Theme',
-    description: 'Over 100+ templates and pages...',
-    right: '$24',
-  },
-  {
-    id: 5,
-    image: product5Image,
-    title: 'Camera App',
-    description: 'Over 30+ filter...',
-    right: '$6.99',
-  },
-  {
-    id: 6,
-    image: product6Image,
-    title: 'Calendar App',
-    description: 'Organize your schedule...',
-    right: '$0.99',
-  },
-];
 export const avatarsData = [
   {
     avatar: user1Image,

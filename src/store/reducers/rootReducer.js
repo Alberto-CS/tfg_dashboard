@@ -1,21 +1,22 @@
 import authReducer from './authReducer'
-import dishReducer from './dishReducer'
+import dishReducer, * as fromDishes from './dishReducer'
 import menuReducer from './menuReducer'
-import restaurantReducer from './restaurantReducer'
+import searchReducer from './searchReducer'
 import { combineReducers} from 'redux'
-import langReducer from './langReducer'
 import { firestoreReducer } from 'redux-firestore'
 import { firebaseReducer } from 'react-redux-firebase'
+
 
 const rootReducer = combineReducers({
     auth: authReducer,
     dish: dishReducer,
     menu: menuReducer,
-    restaurant: restaurantReducer,
-    language: langReducer,
+    search: searchReducer,
     firestore: firestoreReducer,
-    firebase: firebaseReducer
+    firebase: firebaseReducer,
 });
 
-
 export default rootReducer
+
+export const getDishes = (state, filter) =>
+    fromDishes.getDishes(state, filter)

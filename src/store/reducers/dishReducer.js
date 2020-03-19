@@ -1,11 +1,6 @@
 const initState = {
     //dummy data
-    dishes: [
-        {id: '1', title: 'Bibimbap', photo: 'https://picsum.photos/200', description: 'A Korean dish consisting of rice topped with sautéed vegetables, chilli paste, and beef or other meat, sometimes with the addition of a raw or fried egg', allergens: 'egg, soy'},
-        {id: '2', title: 'Ramyeon', photo: 'https://picsum.photos/200', description: 'A Japanese dish cosisting of quick-cooking noodles, typically served in a broth with meat and vegetables', allergens: ''},
-        {id: '3', title: 'Maki sushi', photo: 'https://picsum.photos/200', description: 'A Japanese dish consisting of sushi and raw vegetables wrapped in seaweed', allergens: ''},
-        {id: '4', title: 'Kimchi', photo: 'https://picsum.photos/200', description: 'A Korean dish of spicy pickled cabbage.', allergens: ''}
-    ]
+    dishes: []
 }
 
 const dishReducer = (state = initState, action) => {
@@ -35,3 +30,20 @@ const dishReducer = (state = initState, action) => {
 }
 
 export default dishReducer
+
+export const getDishes = (dishes, filter) => {
+    if (dishes !== undefined){
+        if (filter === '' || filter === undefined ){
+            return dishes
+        } else {
+            return dishes.filter(dish => {
+                if (dish.title.includes(filter)){
+                    return dish
+                } else {
+                    return null
+                }
+                
+            })        
+        }
+    }
+}
