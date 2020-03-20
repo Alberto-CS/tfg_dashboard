@@ -32,7 +32,10 @@ const listDishCard = ({dish, deleteDish, toggle}) => {
                     <CardTitle className="text-primary d-flex justify-content-center">{dish.title}</CardTitle>
                     <CardText>
                         <p className="small d-flex justify-content-center">{dish.description}</p>
-                        <p className="small d-flex justify-content-center">{dish.price} €</p>
+                        {(dish.discount === "" || dish.discount === dish.price)
+                        ? <p className="d-flex justify-content-center">{dish.price} €</p>
+                        : <div className=""><p className="d-flex justify-content-center"><strike className="mr-2 text-danger small">{dish.price} €</strike>{dish.discount} €</p></div>
+                        }
                     </CardText>
                     <Row>
                         <Col className="d-flex justify-content-center">

@@ -23,7 +23,7 @@ const dishCard = ({dish}) => {
                 <CardTitle className="text-secondary d-flex justify-content-center">{dish.title}</CardTitle>
                 <CardText>
                     <p className="small d-flex justify-content-center">{dish.description}</p>
-                    <p className="small d-flex justify-content-center">{dish.price} €</p>
+                    <p className="small d-flex justify-content-center">{dish.price} €</p>                    
                 </CardText>
                 <Row>
                     <Col className="d-flex justify-content-center">

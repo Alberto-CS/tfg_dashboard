@@ -28,7 +28,12 @@ const menuDishCard = ({dish, removeDishFromState, positionOfDish, btn, menu}) =>
                     <CardTitle className="text-primary h5">{dish.title}</CardTitle>
                     <CardText>
                         <span className="small">{dish.description}</span>
-                        {menu.showPrice ? <p> {dish.price} €</p> : null}
+                        {menu.showPrice 
+                        ?   <div>{(dish.discount === "" || dish.discount === dish.price)
+                                ? <p>{dish.price} €</p>
+                                : <div><p><strike className="mr-2 text-danger small">{dish.price} €</strike>{dish.discount} €</p></div>}
+                            </div> 
+                        : null}
                     </CardText>
                     <Row>
                         <Col>

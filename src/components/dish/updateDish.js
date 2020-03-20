@@ -34,6 +34,7 @@ class UpdateDish extends Component {
         allergens: [...this.props.dishId.allergens],
         spicy: this.props.dishId.spicy,
         vegetarian: this.props.dishId.vegetarian,
+        discount: ''
     }
     
     image = {
@@ -93,12 +94,13 @@ class UpdateDish extends Component {
                                             </Row>
                                             <Row>
                                                 <Col className="mx-auto mt-1 col-11">
-                                                    <label className="text-secondary" htmlFor="textarea">Price</label>
-                                                    <div>
-                                                        <input className="form-control" type="number" id="price" value={this.state.price} onChange={ this.handleChange } />
-                                                    </div>
-                                                    <select className="mx-auto mt-2 d-none">
-                                                        <option disabled selected>Tipo de plato</option>
+                                                    <label className="text-secondary" htmlFor="price">Price</label>
+                                                    <input className="form-control" type="number" id="price" value={this.state.price} onChange={ this.handleChange } />
+                                                    <label className="text-secondary mt-2" htmlFor="discount">Price with discount</label>
+                                                    <input className="form-control" type="number" id="discount" value={this.state.discount} onChange={ this.handleChange } />
+
+                                                    <select className="mx-auto mt-2 d-flex col-12" disabled>
+                                                        <option disabled selected>Dish Category</option>
                                                         <option value="0">Entremeses</option>
                                                         <option value="1">Plato Principal</option>
                                                         <option value="2">Postre</option>
