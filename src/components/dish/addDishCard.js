@@ -21,9 +21,12 @@ const dishCard = ({dish}) => {
             <CardImg top name={dish.title} src={ dish.url ? getImageClass(dish.url, dish.title) : logo200Image }  id="output" alt={dish.title}/>
             <CardBody>
                 <CardTitle className="text-secondary d-flex justify-content-center">{dish.title}</CardTitle>
-                <CardText>{dish.description}</CardText>
+                <CardText>
+                    <p className="small d-flex justify-content-center">{dish.description}</p>
+                    <p className="small d-flex justify-content-center">{dish.price} €</p>
+                </CardText>
                 <Row>
-                    <Col>
+                    <Col className="d-flex justify-content-center">
                     {dish && dish.allergens.map(allergen =>{
                             if ( allergen.isInTheDish === true){
                                 return (<img key={allergen.id} className="iconAllergies mx-1" id={allergen.name} name={allergen.name}

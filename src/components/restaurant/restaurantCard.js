@@ -17,7 +17,7 @@ const restaurantCard = ({restaurant, profile, selectRestaurant}) => {
             <CardTitle className="h3 text-primary d-flex justify-content-center">{restaurant.name}</CardTitle>
             <CardImg top name={restaurant.name} src={ restaurant.url ? getImageClass(restaurant.url, restaurant.name) : logo200Image }  id="output" alt={restaurant.name}/>
             <CardBody>
-                <CardText className="d-flex justify-content-center">{restaurant.description}</CardText>
+                <CardText className="d-flex justify-content-center small">{restaurant.description}</CardText>
             </CardBody>
             {(restaurant.name === profile)
             ? <button className="btn btn-secondary btn-sm btn-block" disabled> Restaurant Selected</button>

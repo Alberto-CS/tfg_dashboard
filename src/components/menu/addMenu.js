@@ -1,5 +1,5 @@
 import  React, {Component } from 'react'
-import DishCard  from './dishCard'
+import DishCard  from './addMenuDishCard'
 import MenuDishCard  from './menuDishCard'
 import { connect } from 'react-redux'
 import { createMenu } from '../../store/actions/menuActions'
@@ -102,18 +102,14 @@ class CreateMenu extends Component {
                             <Form onSubmit={ this.handleSubmit }>
                                     <Row>
                                         <Col className="col-8 mx-auto mt-1">
-                                            <Row>
+                                            <Row className="col-11">
                                                 <h5 className="text-secondary h5" htmlFor="title">Title</h5>
-                                                <input className="ml-4" type="form-control" id="title" onChange={ this.handleChange } />
+                                                <input className="form-control" type="form-control" id="title" onChange={ this.handleChange } />
                                             </Row>
-                                            <Row className="mt-4">
+                                            <Row className="col-11 mt-2">
                                                 <label className="text-secondary h5">Price</label>
-                                                    <div className="mx-auto">
-                                                        <input type="number" id="price" onChange={ this.handleChange } />
-                                                        <label className="ml-1" htmlFor="price">€</label>
-                                                    </div>
-                                            </Row>
-                                            
+                                                <input className="form-control" type="form-control" placeholder="€" id="price" onChange={ this.handleChange } />
+                                            </Row>                                            
                                         </Col>
                                         <Col className="mt-2 col-4 mx-auto">
                                             <h5 className="text-primary mx-auto">Additional languages:</h5>

@@ -82,21 +82,20 @@ class UpdateDish extends Component {
                                         <div className="col-7 mx-auto">
                                             <h5 className="text-primary h5">Dish Data</h5>
                                             <Row>
-                                                <Col className="mx-auto mt-1">
+                                                <Col className="mx-auto mt-1 col-11">
                                                     <label className="text-secondary" htmlFor="title">Name</label>
-                                                    <input type="form-control" id="title" value={this.state.title} onChange={ this.handleChange } />
+                                                    <input type="form-control" className="form-control" id="title" value={this.state.title} onChange={ this.handleChange } />
                                                 </Col>
-                                                <Col className="mx-auto mt-1">
+                                                <Col className="mx-auto mt-1 col-11">
                                                     <label className="text-secondary" htmlFor="textarea">Description</label>
-                                                    <textarea className="materialize-textarea" value={this.state.description} id="description" onChange= {this.handleChange}></textarea>
+                                                    <textarea className="form-control" value={this.state.description} id="description" onChange= {this.handleChange}></textarea>
                                                 </Col>                                        
                                             </Row>
                                             <Row>
-                                                <Col className="mx-auto mt-1">
+                                                <Col className="mx-auto mt-1 col-11">
                                                     <label className="text-secondary" htmlFor="textarea">Price</label>
                                                     <div>
-                                                        <input type="number" id="price" value={this.state.price} onChange={ this.handleChange } />
-                                                        <label className="ml-1" htmlFor="price">€</label>
+                                                        <input className="form-control" type="number" id="price" value={this.state.price} onChange={ this.handleChange } />
                                                     </div>
                                                     <select className="mx-auto mt-2 d-none">
                                                         <option disabled selected>Tipo de plato</option>

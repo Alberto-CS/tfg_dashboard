@@ -29,10 +29,13 @@ const listDishCard = ({dish, deleteDish, toggle}) => {
             <Card className="dishCard">
                 <CardImg top src={ dish.url ? getImage(dish.url, dish.id) : logo200Image } id={dish.id} alt={dish.title}/>
                 <CardBody>
-                    <CardTitle>{dish.title}</CardTitle>
-                    <CardText>{dish.description}</CardText>
+                    <CardTitle className="text-primary d-flex justify-content-center">{dish.title}</CardTitle>
+                    <CardText>
+                        <p className="small d-flex justify-content-center">{dish.description}</p>
+                        <p className="small d-flex justify-content-center">{dish.price} €</p>
+                    </CardText>
                     <Row>
-                        <Col>
+                        <Col className="d-flex justify-content-center">
                             {dish.allergens && dish.allergens.map(allergen =>{
                                 if ( allergen.isInTheDish === true){
                                 return (<img className="iconAllergies mx-1" id={allergen.name} name={allergen.name}

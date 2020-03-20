@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import DishCard from './dishCard'
+import DishCard from './addDishCard'
 import { connect } from 'react-redux'
 import { createDish } from '../../store/actions/dishActions'
 import { Redirect } from 'react-router-dom'

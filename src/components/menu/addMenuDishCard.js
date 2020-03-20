@@ -24,10 +24,13 @@ const DishCard = ({dish, addDishToState}) => {
             <Card className="dishCard">
                 <CardImg top src={ dish.url ? getImage(dish.url, dish.id) : logo200Image } id={dish.id} alt={dish.title}/>
                 <CardBody>
-                    <CardTitle>{dish.title}</CardTitle>
-                    <CardText>{dish.description}</CardText>
+                    <CardTitle className="text-secondary d-flex justify-content-center">{dish.title}</CardTitle>
+                    <CardText>
+                        <p className="small d-flex justify-content-center">{dish.description}</p>
+                        <p className="small d-flex justify-content-center">{dish.price} €</p>
+                    </CardText>
                     <Row>
-                        <Col>
+                        <Col className="d-flex justify-content-center">
                             {dish && dish.allergens.map(allergen =>{
                                 if ( allergen.isInTheDish === true){
                                 return (<img className="iconAllergies mx-1" key={allergen.name} id={allergen.name} name={allergen.name}
