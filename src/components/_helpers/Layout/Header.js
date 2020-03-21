@@ -2,7 +2,7 @@ import Avatar from 'components/_helpers/Avatar';
 import { UserCard } from 'components/_helpers/Card';
 import Notifications from 'components/_helpers/Notifications';
 import SearchInput from 'components/_helpers/SearchInput';
-import { notificationsData } from 'demos/header';
+import { notificationsData } from 'components/_helpers/demos/header';
 import withBadge from '../hocs/withBadge';
 import React from 'react';
 import { connect } from 'react-redux'

@@ -1,6 +1,6 @@
 import Page from 'components/_helpers/Page';
 import {  NumberWidget } from 'components/_helpers/Widget';
-import { chartjs } from 'demos/dashboardPage';
+import { chartjs } from 'components/_helpers/demos/dashboardPage';
 import React from 'react';
 import {  Line } from 'react-chartjs-2';
 
