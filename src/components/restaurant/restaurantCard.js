@@ -8,14 +8,14 @@ import {
 } from 'reactstrap';
 
 import logo200Image from 'assets/img/logo/logo_200.png';
-import { getImageClass} from '../../store/actions/imageActions'
+import { getRestaurant} from '../../store/actions/imageActions'
 
 
 const restaurantCard = ({restaurant, profile, selectRestaurant}) => {
     return (
         <Card className="dishCard">
             <CardTitle className="h3 text-primary d-flex justify-content-center">{restaurant.name}</CardTitle>
-            <CardImg top name={restaurant.name} src={ restaurant.url ? getImageClass(restaurant.url, restaurant.name) : logo200Image }  id="output" alt={restaurant.name}/>
+            <CardImg id={restaurant.name} top name={restaurant.name} src={ restaurant.url ? getRestaurant(restaurant.url, restaurant.name) : logo200Image } alt={restaurant.name}/>
             <CardBody>
                 <CardText className="d-flex justify-content-center small">{restaurant.description}</CardText>
             </CardBody>

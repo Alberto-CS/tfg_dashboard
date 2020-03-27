@@ -13,7 +13,7 @@ import {
 } from 'reactstrap';
 import { Redirect } from 'react-router-dom'
 import { connect} from 'react-redux'
-import DishCard from '../components/dish/addDishCard'
+import DishCard from '../components/_helpers/addDishCard'
 import { firestoreConnect} from 'react-redux-firebase'
 import { compose } from 'redux'
 

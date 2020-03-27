@@ -52,3 +52,15 @@ export const getIcon = (name, allergenClass) => {
         console.log(error)
     });
 }
+
+export const getRestaurant = (name, id) => {
+    
+    const storageRef = firebase.storage().ref();
+    storageRef.child(name);
+    storageRef.child('restaurants/' + name + ".jpg").getDownloadURL().then(function(url) {
+        var img = document.getElementById(id);
+        img.src = url;
+    }).catch(function(error) {
+        console.log(error)
+    });
+}
