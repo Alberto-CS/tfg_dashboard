@@ -108,7 +108,7 @@ class CreateMenu extends Component {
                                             </Row>
                                             <Row className="col-11 mt-2">
                                                 <label className="text-secondary h5">Price</label>
-                                                <input className="form-control" type="form-control" placeholder="€" id="price" onChange={ this.handleChange } />
+                                                <input className="form-control" step="any" type="form-control" placeholder="€" id="price" onChange={ this.handleChange } />
                                             </Row>                                            
                                         </Col>
                                         <Col className="mt-2 col-4 mx-auto">

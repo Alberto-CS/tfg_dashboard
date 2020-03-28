@@ -114,7 +114,7 @@ class CreateDish extends Component {
                                             <Col className="mt-1">
                                                 <label className="text-secondary">Price</label>
                                                 <div className="">
-                                                    <input placeholder="€" className="form-control" type="number" id="price" onChange={ this.handleChange } />
+                                                    <input placeholder="€" step="any" className="form-control" type="number" id="price" onChange={ this.handleChange } />
                                                     
                                                 </div>
                                                 <select className="form-control mt-2 d-flex justify-content-start" disabled>

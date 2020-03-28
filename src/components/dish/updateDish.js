@@ -95,9 +95,9 @@ class UpdateDish extends Component {
                                             <Row>
                                                 <Col className="mx-auto mt-1 col-11">
                                                     <label className="text-secondary" htmlFor="price">Price</label>
-                                                    <input className="form-control" type="number" id="price" value={this.state.price} onChange={ this.handleChange } />
+                                                    <input className="form-control" step="any" type="number" id="price" value={this.state.price} onChange={ this.handleChange } />
                                                     <label className="text-secondary mt-2" htmlFor="discount">Price with discount</label>
-                                                    <input className="form-control" type="number" id="discount" value={this.state.discount} onChange={ this.handleChange } />
+                                                    <input className="form-control" step="any" type="number" id="discount" value={this.state.discount} onChange={ this.handleChange } />
 
                                                     <select className="mx-auto mt-2 d-flex col-12" disabled>
                                                         <option disabled selected>Dish Category</option>

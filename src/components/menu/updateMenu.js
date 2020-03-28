@@ -106,7 +106,7 @@ class UpdateMenu extends Component {
                                             </Row>
                                             <Row className="col-11 mt-2">
                                                 <label className="text-secondary h5">Price</label>
-                                                <input className="form-control" type="form-control" placeholder="€" id="price" onChange={ this.handleChange } value={this.state.price} />
+                                                <input className="form-control" step="any" type="form-control" placeholder="€" id="price" onChange={ this.handleChange } value={this.state.price} />
                                             </Row>
                                             
                                         </Col>
