@@ -11,8 +11,7 @@ import { getRestaurant } from '../../store/reducers/restaurantReducer'
 class Restaurants extends Component {
 
     selectRestaurant = (restaurantSelected) => {
-        console.log(restaurantSelected)
-        this.props.selectRestaurant(restaurantSelected, "8q8NCKAS7CQhtrPBuTMeWWCyN6t1")
+        this.props.selectRestaurant(restaurantSelected, this.props.auth.uid)
     }
     
     render(){
