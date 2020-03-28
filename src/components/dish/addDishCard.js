@@ -11,14 +11,14 @@ import {
 } from 'reactstrap';
 
 import logo200Image from 'assets/img/logo/logo_200.png';
-import {getIcon, getImageClass} from '../../store/actions/imageActions'
+import {getIcon, getLocalImage} from '../../store/actions/imageActions'
 
 
-const dishCard = ({dish}) => {
+const dishCard = ({dish, image}) => {
     return (
         <Card className="dishCard">
             {dish.url ? <CardHeader className="text-primary d-flex justify-content-center"></CardHeader> : null}
-            <CardImg top name={dish.title} src={ dish.url ? getImageClass(dish.url, dish.title) : logo200Image }  id="output" alt={dish.title}/>
+            <CardImg top name={dish.title} src={ dish.url ? getLocalImage(image) : logo200Image }  id="output" alt={dish.title}/>
             <CardBody>
                 <CardTitle className="text-secondary d-flex justify-content-center">{dish.title}</CardTitle>
                 <CardText>

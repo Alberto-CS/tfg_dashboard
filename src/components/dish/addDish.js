@@ -48,6 +48,7 @@ class CreateDish extends Component {
             {name: 'lacteos', isInTheDish: false},],
         spicy: false,
         vegetarian: false,
+        discount: '',
     }
     
     image = {
@@ -88,7 +89,7 @@ class CreateDish extends Component {
         return (
             <div>
                 <Row className="d-flex flex-wrap">
-                    <div className="align-self-center col-5 justify-content-center mx-auto"><DishCard dish={this.state} /></div>
+                    <div className="align-self-center col-5 justify-content-center mx-auto"><DishCard dish={this.state} image={this.image.file} /></div>
                     <Col className="align-self-center col-6 justify-content-center mx-auto">
                     <Card className="formCard">
                     <CardHeader className="text-primary display-4">New Dish</CardHeader>
